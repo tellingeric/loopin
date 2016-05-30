@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('LoopIn', ['ionic', 'LoopIn.controllers'])
+angular.module('LoopIn', ['ionic','LoopIn.controllers','LoopIn.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -28,10 +28,49 @@ angular.module('LoopIn', ['ionic', 'LoopIn.controllers'])
   $ionicConfigProvider.platform.android.tabs.position('bottom');
 
   $stateProvider
-    .state('tabs', {url:'/tab', abstract:true, templateUrl:'templates/tabs.html'})
-    .state('tabs.restaurants', {url:'/restaurants', views:{'tab-restaurants':{templateUrl:'templates/tab-restaurants.html', controller:'restaurantsController'}}})
-    .state('tabs.menu', {url:'/menu', views:{'tab-menu':{templateUrl:'templates/tab-menu.html', controller:'menuController'}}})
-    .state('tabs.cart', {url:'/cart', views:{'tab-cart':{templateUrl:'templates/tab-cart.html', controller:'cartController'}}});
+    .state('tabs', {
+      url:'/tab',
+      abstract:true,
+      templateUrl:'templates/tabs.html'
+    })
+
+    .state('tabs.restaurants', {
+      url:'/restaurants',
+      views:{
+        'tab-restaurants':{
+          templateUrl:'templates/tab-restaurants.html',
+          controller:'restaurantsController'
+        }
+      }})
+
+    // .state('tabs.menu', {
+    //   url:'/menu', views:{
+    //     'tab-menu':{
+    //       templateUrl:'templates/tab-menu.html',
+    //       controller:'menuController'
+    //     }
+    //   }})
+
+    .state('tabs.restaurant-menu', {
+      url:'/restaurants/:restaurantId',
+      view:{
+        'tab-restaurants':{
+          templateUrl:'templates/restaurant-menu.html',
+          controller:'menuController'
+        }
+      }})
+
+
+    .state('tabs.cart', {
+      url:'/cart',
+      views:{
+        'tab-cart':{
+          templateUrl:'templates/tab-cart.html',
+          controller:'cartController'
+        }
+      }});
+
+
 
   $urlRouterProvider.otherwise('/tab/restaurants')
-})
+});
