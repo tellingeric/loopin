@@ -53,7 +53,7 @@ angular.module('LoopIn', ['ionic','LoopIn.controllers','LoopIn.services'])
 
     .state('tabs.restaurant-menu', {
       url:'/restaurants/:restaurantId',
-      view:{
+      views:{
         'tab-restaurants':{
           templateUrl:'templates/restaurant-menu.html',
           controller:'menuController'
