@@ -57,3 +57,19 @@ angular.module('LoopIn.services', [])
       }
     };
   })
+
+
+  .factory('Restaurants', function($localStorage) {
+    // $localStorage = $localStorage.$default({
+    //   Restaurants: [
+    //     {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
+    //     {id:2, name:'Hunan House', address:'40W 56th St, New York, NY 10019', phone:'2122132299'}
+    //   ];
+    // })
+    //
+    // return {
+    //   all: function() {
+    //     return $localStorage.Restaurants;
+    //   }
+    // };
+  })

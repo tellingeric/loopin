@@ -32,6 +32,11 @@ angular.module('LoopIn.controllers',[])
       $scope.orderedItems = [];
     };
 
+    $scope.removeThis = function(item) {
+      OrderedItems.remove(item);
+      $scope.orderedItems = OrderedItems.all();
+    };
+
     $scope.TotalPrice = function(){
       var sumPrice = 0;
       angular.forEach($scope.orderedItems, function(item) {
