@@ -32,23 +32,28 @@ angular.module('LoopIn.services', [])
     };
   })
 
-  
-  //
-  // .factory('OrderedItems', function() {
-  //   var orderedItems =[];
-  //
-  //   return {
-  //     all: function() {
-  //       return orderedItems;
-  //     },
-  //     add: function(itemId) {
-  //       orderedItems.push(itemId);
-  //     }
-  //     remove: function(itemId) {
-  //       orderedItems.splice(orderedItems.indexOf(itemId),1);
-  //     }
-  //     removeAll: function() {
-  //       orderedItems = [];
-  //     }
-  //   }
-  // })
+
+
+  .factory('OrderedItems', function($localStorage) {
+    $localStorage = $localStorage.$default({
+      orderedItems: []
+    });
+
+    return {
+      all: function() {
+        return $localStorage.orderedItems;
+      },
+      add: function(item) {
+        $localStorage.orderedItems.push(item);
+      },
+      remove: function(item) {
+        $localStorage.orderedItems.splice($localStorage.orderedItems.indexOf(item),1);
+      },
+      removeAll: function() {
+        $localStorage.orderedItems = [];
+      },
+      count: function() {
+        return $localStorage.orderedItems.length;
+      }
+    };
+  })

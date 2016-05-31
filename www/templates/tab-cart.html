@@ -1,10 +1,11 @@
 <ion-view view-title="Cart">
   <ion-content class="padding">
-    <h2>Ordered Total: {{cart.TotalItemNumber()}}</h2>
-    [ <a href="" ng-click="cart.RemoveAllItems()">Remove All</a>]
+    <h2>Ordered Total: {{orderedItems.length}}</h2>
+    <h3>Total Price: {{TotalPrice()}}</h3>
+    [ <a href="" ng-click="RemoveAllItems()">Remove All</a>]
     <div class="list">
-      <a class="item" ng-repeat="item in cart.Items" >
-        <h3>{{item.name}}</h3>
+      <a class="item" ng-model="orderedItems" ng-repeat="item in orderedItems">
+        <h3>{{item.name}}    {{item.price}}</h3>
       </a>
     </div>
   </ion-content>
