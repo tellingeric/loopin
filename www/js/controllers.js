@@ -29,7 +29,7 @@ angular.module('LoopIn.controllers',[])
 
     $scope.RemoveAllItems = function(){
       OrderedItems.removeAll();
-      $scope.orderedItems = [];
+      $scope.orderedItems = OrderedItems.all();
     };
 
     $scope.removeThis = function(item) {
