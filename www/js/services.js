@@ -31,6 +31,8 @@ angular.module('LoopIn.services', [])
       }
     };
   })
+
+  
   //
   // .factory('OrderedItems', function() {
   //   var orderedItems =[];

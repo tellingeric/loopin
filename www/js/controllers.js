@@ -14,19 +14,29 @@ angular.module('LoopIn.controllers',[])
 
 
   .controller('cartController', function($scope) {
-    $scope.items = []
-
-    $scope.addItem = function(itemName) {
-      window.alert('!')
-      $scope.items.push({name:itemName});
-    };
+    $scope.orderedItems = [];
+    // $scope.orderedItem = {};
+    //
+    // $scope.getItems = function() {
+    //   if (localStorageService.get(orderedItems)) {
+    //     $scope.orderedItems = localStorageService.get(orderedItems);
+    //   } else {
+    //     $scope.orderedItems = [];
+    //   }
+    // };
+    //
+    // $scope.addItem = function() {
+    //   $scope.orderedItems.push($scope.ordereditems.push($scope.orderedItem));
+    //   localStorageService.set(orderedItems, $scope.orderedItems);
+    //   $scope.orderedItem = {};
+    // };
 
     $scope.TotalItemNumber = function(){
-      return $scope.items.length;
+      return $scope.orderedItems.length;
     };
 
     $scope.RemoveAllItems = function(){
-      $scope.items = [];
+      $scope.orderedItems = [];
     };
 
   })

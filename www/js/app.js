@@ -71,6 +71,7 @@ angular.module('LoopIn', ['ionic','LoopIn.controllers','LoopIn.services'])
       }});
 
 
+  $urlRouterProvider.otherwise('/tab/restaurants');
 
-  $urlRouterProvider.otherwise('/tab/restaurants')
+  // localStorageServiceProvider.setPrefix('LoopIn');
 });
