@@ -4,3 +4,26 @@
 node_modules/
 platforms/
 plugins/
+.idea/
+*.log
+.tmp
+.sass-cache
+
+
+### OSX template
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+.idea_modules/
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
