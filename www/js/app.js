@@ -38,7 +38,7 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       url:'/restaurants',
       views:{
         'tab-restaurants':{
-          templateUrl:'templates/tab-restaurants.html',
+          templateUrl:'templates/restaurants/tab-restaurants.html',
           controller:'restaurantsController'
         }
       }})
@@ -47,7 +47,7 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       url:'/restaurants/:restaurantId',
       views:{
         'tab-restaurants':{
-          templateUrl:'templates/restaurant-menu.html',
+          templateUrl:'templates/restaurants/restaurant-menu.html',
           controller:'menuController'
         }
       }})
@@ -57,12 +57,52 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       url:'/cart',
       views:{
         'tab-cart':{
-          templateUrl:'templates/tab-cart.html',
+          templateUrl:'templates/cart/tab-cart.html',
           controller:'cartController'
         }
-      }});
+      }})
 
 
-  $urlRouterProvider.otherwise('/tab/restaurants');
+      .state('tabs.events', {
+          url: '/events',
+          abstract: true,
+          views: {
+              'tab-events': {
+                  templateUrl: 'templates/events/tab-events.html'
+              }
+          }
+      })
+
+      .state('tabs.events.today', {
+          url: '/today',
+          views: {
+              'events-page': {
+                  templateUrl: 'templates/events/events-today.html',
+                  controller:'restaurantsController'
+              }
+          }
+      })
+
+      .state('tabs.events.restaurants', {
+          url: '/restaurants',
+          views: {
+              'events-page': {
+                  templateUrl: 'templates/events/events-restaurants.html',
+                  controller:'restaurantsController'
+              }
+          }
+      })
+
+      .state('tabs.events.restaurants-menu', {
+          url: '/restaurants/:restaurantId',
+          views: {
+              'events-page': {
+                  templateUrl: 'templates/events/events-restaurants-menu.html',
+                  controller:'menuController'
+              }
+          }
+      })
+
+  $urlRouterProvider.otherwise('/tab/events/today');
 
 });

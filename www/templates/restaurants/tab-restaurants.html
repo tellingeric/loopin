@@ -1,0 +1,21 @@
+<ion-view>
+
+  <ion-nav-buttons>
+    <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
+  </ion-nav-buttons>
+
+
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item class="item-remove-animate" collection-repeat="restaurant in restaurants" type="item-text-wrap" ng-click="rememberRestaurant({{restaurant}})" ng-href="#/tab/restaurants/{{restaurant.id}}">
+        <h3>{{restaurant.name}}   {{restaurant.id}}</h3>
+        <p>{{restaurant.phone}}</p>
+        <p>{{restaurant.address}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+
+
+
+</ion-view>
