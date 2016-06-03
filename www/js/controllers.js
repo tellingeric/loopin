@@ -1,15 +1,26 @@
 
 angular.module('LoopIn.controllers',[])
 
-.controller('restaurantsController', function($scope, $ionicTabsDelegate, $localStorage) {
+.controller('restaurantsController', function($scope, $ionicTabsDelegate, $localStorage, $ionicFilterBar) {
    $scope.restaurants = [
      {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
      {id:2, name:'Hunan House', address:'40W 56th St, New York, NY 10019', phone:'2122132299'}
    ];
+   $scope.filterBarInstance;
 
    $scope.rememberRestaurant = function(restaurant){
      $localStorage.restaurant  = restaurant;
    }
+
+   $scope.showFilterBar = function() {
+     $scope.filterBarInstance = $ionicFilterBar.show({
+       items: $scope.restaurants,
+       update: function(filteredItems){
+         $scope.restaurants = filteredItems;
+       },
+       filterProperties: 'name'
+     });
+   };
 
  })
 
