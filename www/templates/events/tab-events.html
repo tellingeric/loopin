@@ -1,21 +1,18 @@
-<ion-view title="Events">
-
-  <!-- <ion-nav-buttons>
-    <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
-  </ion-nav-buttons> -->
 
 
-   <div class="tabs-striped tabs-top tabs-background-stable">
-     <div class="tabs">
-       <a class="tab-item" ui-sref="tabs.events.today">
-         Today's Special
-       </a>
-       <a class="tab-item" ui-sref="tabs.events.restaurants">
-         Restaurants
-       </a>
-     </div>
-   </div>
+<ion-view>
 
- <ui-view name="events-page"></ui-view>
+  <ion-tabs class="tabs-striped tabs-top tabs-icon-only">
+      <ion-tab title="Today's Special" icon="ion-star" ui-sref="tabs.events.today">
+        <ion-nav-view name="tabs-events-today"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Restaurants" icon="ion-android-restaurant" ui-sref="tabs.events.restaurants">
+        <ion-nav-view name="tabs-events-restaurants"></ion-nav-view>
+      </ion-tab>
+
+  </ion-tabs>
+
+  <!-- <ui-view name="events-page"></ui-view> -->
 
 </ion-view>

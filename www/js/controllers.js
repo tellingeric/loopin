@@ -56,3 +56,13 @@ angular.module('LoopIn.controllers',[])
       return sumPrice.toFixed(2);
     }
   })
+
+  .controller('settingsController', function($scope) {
+
+  })
+
+  .controller('eventsController', function($scope, EventList) {
+    $scope.events = EventList.all();
+
+
+  })

@@ -1,5 +1,13 @@
-<ion-view title="Today's Special">
+<ion-view view-title="Today's Special">
     <ion-content class="padding has-tabs-top">
-      看你妹
+
+      <ion-list>
+        <ion-item class="item-remove-animate" collection-repeat="event in events" type="item-text-wrap">
+          <h3>{{event.Name}}</h3>
+          <p>{{event.Description}}</p>
+          <p>{{event.cancellable}}</p>
+        </ion-item>
+      </ion-list>
+
     </ion-content>
 </ion-view>

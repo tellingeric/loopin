@@ -1,16 +1,21 @@
 
-<ion-tabs class="tabs-icon-top tabs-defaults">
+<ion-tabs class="tabs-icon-top tabs-light">
 
   <ion-tab title="Events" icon="ion-star" ui-sref="tabs.events.today">
     <ion-nav-view name="tab-events"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Restaurants" icon="ion-android-restaurant" href="#/tab/restaurants">
+  <ion-tab title="Restaurants" icon="ion-android-restaurant" ui-sref="tabs.restaurants">
     <ion-nav-view name="tab-restaurants"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Cart" icon="ion-bag" href="#/tab/cart">
+  <ion-tab title="Cart" icon="ion-bag" ui-sref="tabs.cart">
     <ion-nav-view name="tab-cart"></ion-nav-view>
   </ion-tab>
-  
+
+  <ion-tab title="Settings" icon="ion-gear-a" ui-sref="tabs.settings">
+    <ion-nav-view name="tab-settings"></ion-nav-view>
+  </ion-tab>
+
+
 </ion-tabs>

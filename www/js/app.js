@@ -62,13 +62,22 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
         }
       }})
 
+    .state('tabs.settings', {
+      url:'/settings',
+      views:{
+        'tab-settings':{
+          templateUrl:'templates/settings/tab-settings.html',
+          controller:'settingsController'
+        }
+      }})
+
 
       .state('tabs.events', {
           url: '/events',
-          abstract: true,
           views: {
               'tab-events': {
-                  templateUrl: 'templates/events/tab-events.html'
+                  templateUrl: 'templates/events/tab-events.html',
+                  abstract: true
               }
           }
       })
@@ -76,9 +85,9 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       .state('tabs.events.today', {
           url: '/today',
           views: {
-              'events-page': {
+              'tabs-events-today': {
                   templateUrl: 'templates/events/events-today.html',
-                  controller:'restaurantsController'
+                  controller:'eventsController'
               }
           }
       })
@@ -86,7 +95,7 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       .state('tabs.events.restaurants', {
           url: '/restaurants',
           views: {
-              'events-page': {
+              'tabs-events-restaurants': {
                   templateUrl: 'templates/events/events-restaurants.html',
                   controller:'restaurantsController'
               }
@@ -96,13 +105,13 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       .state('tabs.events.restaurants-menu', {
           url: '/restaurants/:restaurantId',
           views: {
-              'events-page': {
+              'tabs-events-restaurants': {
                   templateUrl: 'templates/events/events-restaurants-menu.html',
                   controller:'menuController'
               }
           }
       })
 
-  $urlRouterProvider.otherwise('/tab/events/today');
+  $urlRouterProvider.otherwise('/tab/events');
 
 });

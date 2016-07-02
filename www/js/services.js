@@ -73,3 +73,26 @@ angular.module('LoopIn.services', [])
     //   }
     // };
   })
+
+
+  .factory('EventList', function($http){
+    return {
+      all: function(){
+
+        $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
+          .success(function(data, status, headers, config){
+            console.log('data success');
+            console.log(data);
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('data error');
+          })
+          .then(function(){
+          });
+
+      }
+
+    };
+
+  })
