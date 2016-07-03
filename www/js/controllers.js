@@ -62,7 +62,10 @@ angular.module('LoopIn.controllers',[])
   })
 
   .controller('eventsController', function($scope, EventList) {
-    $scope.events = EventList.all();
+
+    EventList.all().success(function (response) {
+      $scope.events = response;
+    })
 
 
   })

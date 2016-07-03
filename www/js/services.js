@@ -59,7 +59,7 @@ angular.module('LoopIn.services', [])
   })
 
 
-  .factory('Restaurants', function($localStorage) {
+  .factory('Restaurants', function($localStorage, $http) {
     // $localStorage = $localStorage.$default({
     //   Restaurants: [
     //     {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
@@ -72,23 +72,38 @@ angular.module('LoopIn.services', [])
     //     return $localStorage.Restaurants;
     //   }
     // };
+
+    return {
+      all: function(){
+        return $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
+          .success(function(data, status, headers, config){
+            console.log('data success');
+            console.log(JSON.stringify(data));
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('data error');
+          });
+
+      }
+
+    };
+
+
   })
 
 
   .factory('EventList', function($http){
     return {
       all: function(){
-
-        $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
+        return $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
           .success(function(data, status, headers, config){
             console.log('data success');
-            console.log(data);
+            console.log(JSON.stringify(data));
             return data;
           })
           .error(function(data, status, headers, config){
             console.log('data error');
-          })
-          .then(function(){
           });
 
       }
