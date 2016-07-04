@@ -1,9 +1,11 @@
 
 <ion-view view-title="{{restaurant.name}}">
 
-  <ion-content class="padding has-tabs-top">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
+  </ion-nav-buttons>
 
-    <!-- <h3>{{restaurants.address}}</h3> -->
+  <ion-content class="padding has-tabs-top">
 
     <ion-item class="item" ng-repeat="menuItem in menu" ng-click="orderThis({{menuItem}})" >
       <h4>{{menuItem.name}}    {{menuItem.price}}</h4>

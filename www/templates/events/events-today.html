@@ -1,12 +1,19 @@
-<ion-view view-title="Today's Special">
-    <ion-content class="padding has-tabs-top">
+<ion-view view-title="Today's Special" ng-init="getAllEvents()">
 
-      <ion-list>
-        <ion-item class="item-remove-animate" ng-repeat="event in events" type="item-text-wrap">
-          <h3>{{event.Name}}</h3>
-          <p>{{event.Description}}   {{event.Cancellable}}</p>
-        </ion-item>
-      </ion-list>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
+  </ion-nav-buttons>
 
-    </ion-content>
+  <ion-content class="padding has-tabs-top">
+
+    <ion-list>
+      <ion-item class="item-remove-animate" collection-repeat="event in events" type="item-text-wrap" href="#/tab/events/details/{{event._id}}">
+        <h3>{{event.Name}}</h3>
+        <p>{{event.Description}}   {{event.Cancellable}}</p>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
 </ion-view>

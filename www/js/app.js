@@ -92,6 +92,16 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
           }
       })
 
+      .state('tabs.events.details', {
+          url: '/details/:event_id',
+          views: {
+              'tabs-events-today': {
+                  templateUrl: 'templates/events/events-details.html',
+                  controller:'eventsController'
+              }
+          }
+      })
+
       .state('tabs.events.restaurants', {
           url: '/restaurants',
           views: {

@@ -1,7 +1,7 @@
 
 angular.module('LoopIn.controllers',[])
 
-.controller('restaurantsController', function($scope, $ionicTabsDelegate, $localStorage, $ionicFilterBar) {
+.controller('restaurantsController', function($scope, $localStorage, $ionicFilterBar) {
    $scope.restaurants = [
      {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
      {id:2, name:'Hunan House', address:'40W 56th St, New York, NY 10019', phone:'2122132299'}
@@ -24,13 +24,25 @@ angular.module('LoopIn.controllers',[])
 
  })
 
- .controller('menuController', function($scope, $stateParams, $localStorage, RestaurantMenu, OrderedItems){
+ .controller('menuController', function($scope, $stateParams, $localStorage, $ionicFilterBar, RestaurantMenu, OrderedItems){
    $scope.menu = RestaurantMenu.get($stateParams.restaurantId);
    $scope.restaurant = $localStorage.restaurant;
 
    $scope.orderThis = function(item) {
      OrderedItems.add(item);
    };
+
+
+   $scope.showFilterBar = function() {
+     $scope.filterBarInstance = $ionicFilterBar.show({
+       items: $scope.menu,
+       update: function(filteredItems){
+         $scope.menu = filteredItems;
+       },
+       filterProperties: 'name'
+     });
+   };
+
 
  })
 
@@ -54,18 +66,33 @@ angular.module('LoopIn.controllers',[])
         sumPrice += item.price;
       });
       return sumPrice.toFixed(2);
-    }
+    };
   })
 
   .controller('settingsController', function($scope) {
 
   })
 
-  .controller('eventsController', function($scope, EventList) {
+  .controller('eventsController', function($scope, $ionicLoading, $stateParams, $ionicFilterBar, EventList) {
 
-    EventList.all().success(function (response) {
-      $scope.events = response;
-    })
+    $scope.events;
 
+    $scope.getAllEvents = function() {
+      $ionicLoading.show();
+      EventList.all().success(function(response){
+        $scope.events = response;
+        $ionicLoading.hide();
+      });
+    };
+
+    $scope.showFilterBar = function() {
+      $scope.filterBarInstance = $ionicFilterBar.show({
+        items: $scope.events,
+        update: function(filteredItems){
+          $scope.events = filteredItems;
+        },
+        filterProperties: 'Name'
+      });
+    };
 
   })

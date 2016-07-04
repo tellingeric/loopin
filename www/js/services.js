@@ -60,52 +60,50 @@ angular.module('LoopIn.services', [])
 
 
   .factory('Restaurants', function($localStorage, $http) {
-    // $localStorage = $localStorage.$default({
-    //   Restaurants: [
-    //     {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
-    //     {id:2, name:'Hunan House', address:'40W 56th St, New York, NY 10019', phone:'2122132299'}
-    //   ];
-    // })
-    //
+
     // return {
-    //   all: function() {
-    //     return $localStorage.Restaurants;
+    //   all: function(){
+    //     return $http.get('https://loopin-api.herokuapp.com/api/vendors', {params: {} })
+    //       .success(function(data, status, headers, config){
+    //         console.log('data success');
+    //         console.log(JSON.stringify(data));
+    //         return data;
+    //       })
+    //       .error(function(data, status, headers, config){
+    //         console.log('data error');
+    //       });
+    //
     //   }
+    //
     // };
-
-    return {
-      all: function(){
-        return $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
-          .success(function(data, status, headers, config){
-            console.log('data success');
-            console.log(JSON.stringify(data));
-            return data;
-          })
-          .error(function(data, status, headers, config){
-            console.log('data error');
-          });
-
-      }
-
-    };
 
 
   })
 
 
   .factory('EventList', function($http){
+    var events = [];
+
     return {
       all: function(){
         return $http.get('https://loopin-api.herokuapp.com/api/events', {params: {} })
           .success(function(data, status, headers, config){
             console.log('data success');
             console.log(JSON.stringify(data));
+            events = data;
             return data;
           })
           .error(function(data, status, headers, config){
             console.log('data error');
           });
+      },
 
+      get: function(eventId){
+        angular.forEach(events, function(event) {
+          if (event._id == eventId) {
+            return event;
+          }
+        });
       }
 
     };
