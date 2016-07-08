@@ -9,6 +9,7 @@
 
     <ion-item class="item" ng-repeat="menuItem in menu" ng-click="orderThis({{menuItem}})" >
       <h4>{{menuItem.name}}    {{menuItem.price}}</h4>
+      <span class="badge badge-assertive">{{numOfOrders(menuItem)}}</span>
     </ion-item>
 
   </ion-content>

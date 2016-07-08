@@ -32,7 +32,6 @@ angular.module('LoopIn.controllers',[])
      OrderedItems.add(item);
    };
 
-
    $scope.showFilterBar = function() {
      $scope.filterBarInstance = $ionicFilterBar.show({
        items: $scope.menu,
@@ -41,6 +40,15 @@ angular.module('LoopIn.controllers',[])
        },
        filterProperties: 'name'
      });
+   };
+
+   $scope.numOfOrders = function(item){
+     var orderedItems = OrderedItems.all();
+     var count = 0;
+     angular.forEach(orderedItems, function(oItem) {
+       if (oItem.id == item.id) count ++;
+     });
+     return count == 0 ? "" : count;
    };
 
 
@@ -52,7 +60,7 @@ angular.module('LoopIn.controllers',[])
 
     $scope.RemoveAllItems = function(){
       OrderedItems.removeAll();
-      $scope.orderedItems = OrderedItems.all();
+      $scope.orderedItems = [];
     };
 
     $scope.removeThis = function(item) {
@@ -67,6 +75,11 @@ angular.module('LoopIn.controllers',[])
       });
       return sumPrice.toFixed(2);
     };
+
+    $scope.badgeCount = function(){
+      return $scope.orderedItems.length > 9 ? "..." : $scope.orderedItems.length;
+    };
+
   })
 
   .controller('settingsController', function($scope) {
