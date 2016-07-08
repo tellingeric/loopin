@@ -51,6 +51,18 @@ angular.module('LoopIn.controllers',[])
      return count == 0 ? "" : count;
    };
 
+   $scope.toggleMenuItem = function(item) {
+    if ($scope.isOptionsShown(item)) {
+      $scope.shownOptions = null;
+    } else {
+      $scope.shownOptions = item;
+    }
+  };
+
+  $scope.isOptionsShown = function(item) {
+    return $scope.shownOptions === item;
+  };
+
 
  })
 
@@ -77,7 +89,7 @@ angular.module('LoopIn.controllers',[])
     };
 
     $scope.badgeCount = function(){
-      return $scope.orderedItems.length > 9 ? "..." : $scope.orderedItems.length;
+      return $scope.orderedItems.length > 99 ? "..." : $scope.orderedItems.length;
     };
 
   })

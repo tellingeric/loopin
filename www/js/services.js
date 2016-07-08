@@ -3,10 +3,10 @@ angular.module('LoopIn.services', [])
 
   .factory('RestaurantMenu', function() {
     var restaurantMenu = [
-      {id:1, restaurantId:1, name:'Roast Duck', price:13.50},
-      {id:2, restaurantId:1, name:'Pepper Steak', price:10.99},
-      {id:3, restaurantId:2, name:'Dan Dan Noodle', price:7.50},
-      {id:4, restaurantId:2, name:'Double Cooked Pork', price:14.99}
+      {id:1, restaurantId:1, name:'Roast Duck', price:13.50, options:[{spicy: 'none'}]},
+      {id:2, restaurantId:1, name:'Pepper Steak', price:10.99, options:[{spicy: 'mild'}]},
+      {id:3, restaurantId:2, name:'Dan Dan Noodle', price:7.50, options:[{spicy: 'medium'}]},
+      {id:4, restaurantId:2, name:'Double Cooked Pork', price:14.99, options:[{spicy: 'hot'}]}
     ];
 
     return {
