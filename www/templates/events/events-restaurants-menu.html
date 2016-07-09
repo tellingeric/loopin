@@ -5,10 +5,11 @@
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
   </ion-nav-buttons>
 
-  <ion-content class="padding has-tabs-top">
+  <ion-content class="has-tabs-top">
 
     <ion-list>
       <div ng-repeat="menuItem in menu">
+
         <ion-item class="item"  ng-click="toggleMenuItem(menuItem)" ng-class="{active: isOptionsShown(menuItem)}">
           <h4>{{menuItem.name}}    {{menuItem.price}} </h4>
           <span class="badge badge-assertive">{{numOfOrders(menuItem)}}</span>
@@ -22,7 +23,7 @@
           <div class="item item-input-inset">
             <label class="item-input-wrapper">
               <span class="input-label">Q:</span>
-              <input type="number" value="1">
+              <input type="number" value=1>
             </label>
             <button class="button button-small button-assertive" side="right" ng-click="orderThis(menuItem); toggleMenuItem(menuItem)">Add</button>
           </div>

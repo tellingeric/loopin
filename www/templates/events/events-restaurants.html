@@ -4,7 +4,7 @@
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
   </ion-nav-buttons>
 
-    <ion-content class="padding has-tabs-top">
+    <ion-content class="has-tabs-top">
       <ion-list>
         <ion-item class="item-remove-animate" collection-repeat="restaurant in restaurants" type="item-text-wrap" ng-click="rememberRestaurant({{restaurant}})" href="#/tab/events/restaurants/{{restaurant.id}}">
           <h3>{{restaurant.name}}   {{restaurant.id}}</h3>

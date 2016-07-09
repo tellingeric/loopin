@@ -4,14 +4,36 @@
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
   </ion-nav-buttons>
 
-  <ion-content class="padding has-tabs-top">
+  <ion-content class="has-tabs-top">
 
-    <ion-list>
-      <ion-item class="item-remove-animate" collection-repeat="event in events" type="item-text-wrap" href="#/tab/events/details/{{event._id}}">
-        <h3>{{event.name}}</h3>
-        <p>{{event.description}}   {{event.cancellable}}</p>
+    <!-- <ion-list class="list-card">
+      <ion-item class="item-remove-animate item-text-wrap" ng-repeat="event in events" ng-click="showEventDetails(event.id)" >
+
+
+
+            <img class="item-image full-image" src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg">
+
+            <div class="card-title">{{event.name}}</div>
+            <div class="card-subtitle">{{event.description}}</div>
+
       </ion-item>
-    </ion-list>
+
+    </ion-list> -->
+
+
+    <div ng-repeat="event in events">
+			<div class="card" ng-click="showEventDetails(event.id)" >
+				<div class="item item-image">
+					<img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg">
+				</div>
+
+				<a class="item">
+					<h3>{{event.name}}</h3>
+					<h4>{{event.description}}</h4>
+				</a>
+			</div>
+
+		</div>
 
   </ion-content>
 

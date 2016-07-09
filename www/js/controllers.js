@@ -70,6 +70,8 @@ angular.module('LoopIn.controllers',[])
   .controller('cartController', function($scope, OrderedItems) {
     $scope.orderedItems = OrderedItems.all();
 
+
+
     $scope.RemoveAllItems = function(){
       OrderedItems.removeAll();
       $scope.orderedItems = [];
@@ -98,7 +100,7 @@ angular.module('LoopIn.controllers',[])
 
   })
 
-  .controller('eventsController', function($scope, $ionicLoading, $stateParams, $ionicFilterBar, EventList) {
+  .controller('eventsController', function($scope, $ionicLoading, $stateParams, $state, $ionicFilterBar, EventList) {
 
     $scope.events;
 
@@ -119,5 +121,12 @@ angular.module('LoopIn.controllers',[])
         filterProperties: 'Name'
       });
     };
+
+    $scope.showEventDetails = function(eventId){
+      $state.go('tabs.events.details', {
+				event_id: eventId
+			});
+    }
+
 
   })
