@@ -3,7 +3,20 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.controllers','LoopIn.services'])
+angular.module('LoopIn', [
+  'ionic',
+
+  'ngStorage',
+
+
+  'jett.ionic.filter.bar',
+
+
+  'LoopIn.cart',
+  'LoopIn.settings',
+  'LoopIn.events'
+
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,94 +46,6 @@ angular.module('LoopIn', ['ionic','ngStorage','jett.ionic.filter.bar','LoopIn.co
       abstract:true,
       templateUrl:'templates/tabs.html'
     })
-
-    .state('tabs.restaurants', {
-      url:'/restaurants',
-      views:{
-        'tab-restaurants':{
-          templateUrl:'templates/restaurants/tab-restaurants.html',
-          controller:'restaurantsController'
-        }
-      }})
-
-    .state('tabs.restaurant-menu', {
-      url:'/restaurants/:restaurantId',
-      views:{
-        'tab-restaurants':{
-          templateUrl:'templates/restaurants/restaurant-menu.html',
-          controller:'menuController'
-        }
-      }})
-
-
-    .state('tabs.cart', {
-      url:'/cart',
-      views:{
-        'tab-cart':{
-          templateUrl:'templates/cart/tab-cart.html',
-          controller:'cartController'
-        }
-      }})
-
-    .state('tabs.settings', {
-      url:'/settings',
-      views:{
-        'tab-settings':{
-          templateUrl:'templates/settings/tab-settings.html',
-          controller:'settingsController'
-        }
-      }})
-
-
-      .state('tabs.events', {
-          url: '/events',
-          views: {
-              'tab-events': {
-                  templateUrl: 'templates/events/tab-events.html',
-                  abstract: true
-              }
-          }
-      })
-
-      .state('tabs.events.today', {
-          url: '/today',
-          views: {
-              'tabs-events-today': {
-                  templateUrl: 'templates/events/events-today.html',
-                  controller:'eventsController'
-              }
-          }
-      })
-
-      .state('tabs.events.details', {
-          url: '/details/:event_id',
-          views: {
-              'tabs-events-today': {
-                  templateUrl: 'templates/events/events-details.html',
-                  controller:'eventsController'
-              }
-          }
-      })
-
-      .state('tabs.events.restaurants', {
-          url: '/restaurants',
-          views: {
-              'tabs-events-restaurants': {
-                  templateUrl: 'templates/events/events-restaurants.html',
-                  controller:'restaurantsController'
-              }
-          }
-      })
-
-      .state('tabs.events.restaurants-menu', {
-          url: '/restaurants/:restaurantId',
-          views: {
-              'tabs-events-restaurants': {
-                  templateUrl: 'templates/events/events-restaurants-menu.html',
-                  controller:'menuController'
-              }
-          }
-      })
 
   $urlRouterProvider.otherwise('/tab/events');
 
