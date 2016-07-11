@@ -3,7 +3,6 @@
 
   angular.module('LoopIn.events', [
 		'ionic',
-    'ngStorage'
     ])
 
   .config(function($stateProvider) {

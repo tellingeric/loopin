@@ -4,7 +4,7 @@ angular.module('LoopIn.cart')
 
   $scope.RemoveAllItems = function(){
     OrderedItems.removeAll();
-    $scope.orderedItems = [];
+    $scope.orderedItems = OrderedItems.all();
   };
 
   $scope.removeThis = function(item) {

@@ -5,8 +5,8 @@ angular.module('LoopIn.cart')
       orderedItems: []
     });
 
-    console.log('Cart SERVICE');
-    
+    console.log('CART SERVICE Init');
+
     return {
       all: function() {
         return $localStorage.orderedItems;

@@ -1,10 +1,10 @@
-<ion-view view-title="Today's Special" ng-init="getAllEvents()">
+<ion-view view-title="Features" ng-init="getAllEvents()">
 
   <ion-nav-buttons side="right">
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
   </ion-nav-buttons>
 
-  <ion-content class="has-tabs-top">
+  <ion-content class="has-tabs-top padding">
 
     <!-- <ion-list class="list-card">
       <ion-item class="item-remove-animate item-text-wrap" ng-repeat="event in events" ng-click="showEventDetails(event.id)" >
@@ -22,9 +22,9 @@
 
 
     <div ng-repeat="event in events">
-			<div class="card" ng-click="showEventDetails(event.id)" >
+			<div class="card" ng-click="showEventDetails(event._id)" >
 				<div class="item item-image">
-					<img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg">
+					<img ng-src="{{event.img_url}}">
 				</div>
 
 				<a class="item">

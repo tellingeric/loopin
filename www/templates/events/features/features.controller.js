@@ -1,12 +1,22 @@
 angular.module('LoopIn.events')
 
-.controller('featuresController', function($scope, $ionicLoading, $stateParams, $state, $ionicFilterBar, EventList) {
+.controller('featuresController', function($scope, $ionicLoading, $stateParams, $state, $ionicFilterBar, EventsService) {
 
-  $scope.events;
+  $scope.events = [];
+  $scope.event = EventsService.get($stateParams.event_id);
+
+  // if ($stateParams.event_id != null) {
+  //   $ionicLoading.show();
+  //   EventsService.get($stateParams.event_id).then(function(response){
+  //     $scope.event = response;
+  //     $ionicLoading.hide();
+  //   });
+  // }
+
 
   $scope.getAllEvents = function() {
     $ionicLoading.show();
-    EventList.all().success(function(response){
+    EventsService.all().success(function(response){
       $scope.events = response;
       $ionicLoading.hide();
     });
@@ -27,5 +37,7 @@ angular.module('LoopIn.events')
 			event_id: eventId
 		});
   }
+
+
 
 })
