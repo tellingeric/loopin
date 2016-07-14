@@ -8,6 +8,7 @@ angular.module('LoopIn.cart')
   };
 
   $scope.removeThis = function(item) {
+    console.log('!!!!');
     OrderedItems.remove(item);
     $scope.orderedItems = OrderedItems.all();
   };

@@ -5,6 +5,8 @@ angular.module('LoopIn.events')
   $scope.events = [];
   $scope.event = EventsService.get($stateParams.event_id);
 
+  console.log(JSON.stringify($scope.event));
+
   // if ($stateParams.event_id != null) {
   //   $ionicLoading.show();
   //   EventsService.get($stateParams.event_id).then(function(response){

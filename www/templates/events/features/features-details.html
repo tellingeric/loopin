@@ -14,16 +14,42 @@
 
     <h2>Products</h2>
     <div ng-repeat="product in event.products">
-      <div class="card" ng-click="" >
-        <div class="item item-image">
-          <img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg">
-        </div>
+      <div class="card" >
 
-        <a class="item">
-          <h3>id: {{product._id}}</h3>
-          <h4>price: {{product.unitPrice}}</h4>
-          <h4>sold: {{product.num_sold}}</h4>
-        </a>
+        <h3>name: {{product.product_id.name}}</h3>
+        <h4>price: {{product.unit_price}}</h4>
+        <h4>sold: {{product.num_sold}}</h4>
+
+        <h4>Options:</h4>
+        <ion-list ng-repeat="detail in product.product_id.details" >
+          <div>{{detail.description}} - {{detail.price}}</div>
+          <div class="item item-image">
+            <!-- <img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg"> -->
+            <img ng-src="{{detail.img_url}}" />
+          </div>
+
+          <ion-item ng-repeat="option in detail.options" >
+            <h4>{{option.option_name}}</h4>
+
+
+            <div ng-switch on="{{option.multiple}}">
+              <div ng-switch-when="true">
+                <ion-checkbox ng-repeat="sel in option.option_selections" >
+                  {{sel}}
+                </ion-checkbox>
+              </div>
+              <div ng-switch-default>
+                <ion-radio ng-repeat="sel in option.option_selections" class="icon-left" >
+                  {{sel}}
+                </ion-radio>
+              </div>
+          </div>
+
+
+          </ion-item>
+
+        </ion-list>
+
       </div>
 
     </div>

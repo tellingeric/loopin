@@ -7,33 +7,21 @@
       <button class="button button-small button-positive">Order Now</button>
       <button class="button button-small button-assertive" ng-click="RemoveAllItems()">Remove All</button>
     </div>
+    <ion-toggle ng-model="shouldShowDelete">
+      Show Delete?
+    </ion-toggle>
 
-    <ion-list >
-      <ion-item ng-repeat="item in orderedItems" class="item-thumbnail-left item-text-wrap item-button-right">
+
+    <!-- <ion-list show-delete="shouldShowDelete" >
+      <ion-item ng-repeat="item in orderedItems" class="item-thumbnail-left item-text-wrap item-button-right item-remove-animate">
 
         <img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg" />
 
         <h2>{{item.name}}</h2>
         <p>{{item.description | limitTo: 80 }}{{item.description.length > 80 ? '...' : ''}}</p>
 
-        <span>
-          <button class="button icon button-icon ion-chevron-up" ng-click=""></button>
-          1
-          <button class="button icon button-icon ion-chevron-down" ng-click=""></button>
-        </span>
 
-
-        <!-- <button class="button icon button-icon ion-trash-a" ng-click="removeThis({{item}})"></button> -->
-
-        <!-- <ion-option-button class="button-calm" ng-click="{{console.log("+")}}">
-					+
-				</ion-option-button>
-
-        <ion-option-button class="button-balanced" ng-click="{{console.log("-")}}">
-          -
-        </ion-option-button> -->
-
-        <ion-option-button class="button-assertive" ng-click="removeThis({{item}})">Remove</ion-option-button>
+        <ion-delete-button class="ion-minus-circled" ng-click="removeThis({{item}})"></ion-delete-button>
 
 
 
@@ -41,54 +29,44 @@
 
       </ion-item>
     </ion-list>
+ -->
 
 
-      <!-- <div class="item item-button-right" ng-model="orderedItems" ng-repeat="item in orderedItems">
-        <span>{{item.name}}    {{item.price}}</span>
 
-        <button class="button icon button-icon ion-trash-a" ng-click="removeThis({{item}})"></button>
-      </div> -->
+
+
+    <div class="list card" show-delete="true" ng-repeat="item in orderedItems">
+
+      <div class="item item-remove-animate item-thumbnail-left">
+        <img src="http://i.imgur.com/6zQAymt.jpg" />
+
+        <h2>{{ item.name }}</h2>
+        <h3>Options:</h3>
+
+        <p>{{ item.description }}</p>
+        <a class="subdued">
+          Quantity: 10
+        </a>
+      </div>
+
+    <div class="item tabs tabs-secondary tabs-icon-left">
+      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+        <i class="icon ion-plus-circled balanced"></i> More
+      </a>
+
+      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+        <i class="icon ion-minus-circled assertive"></i> Less
+      </a>
+
+      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="removeThis({{item}})">
+        <i class="icon ion-trash-a"></i> Remove
+      </a>
+
+    </div>
+  </div>
+
+
 
 
   </ion-content>
 </ion-view>
-
-<!-- <ion-list can-swipe="true">
-			<ion-item ng-repeat="item in vm.items" class="item-thumbnail-left item-text-wrap">
-				<img ng-src="{{item.picture}}" />
-				<h2>{{item.name}}</h2>
-				<p>{{item.description | limitTo: 80 }}{{item.description.length > 80 ? '...' : ''}}</p>
-				<p class="text-right">{{item.price | currency : item.currency : 2 }} x {{item.quantity}} {{item.size}}</p>
-
-				<p class="text-right" ng-repeat="option in item.options" style="font-style: italic;">
-					{{option.name}}: {{option.value | currency : item.currency : 2 }}
-				</p>
-
-				<p class="text-right" style="font-weight: 500;">
-					Total: {{vm.getItemTotal(item) | currency : item.currency : 2 }}
-				</p>
-
-				<ion-option-button class="button-balanced" ng-click="vm.changeQuantity(item)">
-					Change quantity
-				</ion-option-button>
-				<ion-option-button class="button-assertive" ng-click="vm.deleteItem(item)">
-					Delete
-				</ion-option-button>
-			</ion-item>
-		</ion-list>
-
-
-
-<div ng-repeat="event in events">
-  <div class="card" ng-click="showEventDetails(event._id)" >
-    <div class="item item-image">
-      <img ng-src="{{event.img_url}}">
-    </div>
-
-    <a class="item">
-      <h3>{{event.name}}</h3>
-      <h4>{{event.description}}</h4>
-    </a>
-  </div>
-
-</div> -->
