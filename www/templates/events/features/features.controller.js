@@ -41,5 +41,18 @@ angular.module('LoopIn.events')
   }
 
 
+  $scope.toggleProduct = function(product) {
+   if ($scope.isProductDetailShown(product)) {
+     $scope.shownDetail = null;
+   } else {
+     $scope.shownDetail = product;
+   }
+ };
+
+ $scope.isProductDetailShown = function(product) {
+   return $scope.shownDetail === product;
+ };
+
+
 
 })

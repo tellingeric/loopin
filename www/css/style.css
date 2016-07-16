@@ -27,3 +27,11 @@
 .no-padding {
   padding: 0 !important;
 }
+
+.cart-item.ng-leave {
+  transition:0.5s linear all;
+  opacity:1;
+}
+.cart-item.ng-leave.ng-leave-active {
+  opacity:0;
+}

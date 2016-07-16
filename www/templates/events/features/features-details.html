@@ -3,6 +3,10 @@
   <ion-content class="has-tabs-top padding">
 
 
+    <h2>Description</h2>
+    <p>
+      {{event.description}}
+    </p>
 
     <h2>Delivery Schedule</h2>
     <ion-list>
@@ -13,44 +17,43 @@
 
 
     <h2>Products</h2>
-    <div ng-repeat="product in event.products">
-      <div class="card" >
+    <div class="list card" ng-repeat="product in event.products" >
+
+      <ion-item class="item item-thumbnail-left"  ng-click="toggleProduct(product)" ng-class="{active: isProductDetailShown(product)}" >
+
+        <img ng-src="{{product.product_id.details[0].img_url}}" />
 
         <h3>name: {{product.product_id.name}}</h3>
         <h4>price: {{product.unit_price}}</h4>
         <h4>sold: {{product.num_sold}}</h4>
 
+      </ion-item>
+
+      <ion-item class="item-accordion" ng-show="isProductDetailShown(product)" >
+
         <h4>Options:</h4>
         <ion-list ng-repeat="detail in product.product_id.details" >
-          <div>{{detail.description}} - {{detail.price}}</div>
-          <div class="item item-image">
-            <!-- <img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg"> -->
-            <img ng-src="{{detail.img_url}}" />
-          </div>
+          <div>Description: {{detail.description}}</div>
+          <div>Price: {{detail.price}}</div>
 
           <ion-item ng-repeat="option in detail.options" >
-            <h4>{{option.option_name}}</h4>
-
-
-            <div ng-switch on="{{option.multiple}}">
+            <h4>{{option.name}}</h4>
+            <div ng-switch on="{{option.isMultiple}}">
               <div ng-switch-when="true">
-                <ion-checkbox ng-repeat="sel in option.option_selections" >
+                <ion-checkbox ng-repeat="sel in option.selections" >
                   {{sel}}
                 </ion-checkbox>
               </div>
               <div ng-switch-default>
-                <ion-radio ng-repeat="sel in option.option_selections" class="icon-left" >
+                <ion-radio ng-repeat="sel in option.selections" class="icon-left" >
                   {{sel}}
                 </ion-radio>
               </div>
-          </div>
-
-
+            </div>
           </ion-item>
-
         </ion-list>
 
-      </div>
+      </ion-item>
 
     </div>
 
