@@ -33,8 +33,13 @@
 
         <h4>Options:</h4>
         <ion-list ng-repeat="detail in product.product_id.details" >
-          <div>Description: {{detail.description}}</div>
-          <div>Price: {{detail.price}}</div>
+          <div>
+            <p>
+              Description: {{detail.description}}
+            </p>
+            <p>
+              Price: {{detail.price}}
+            </p>
 
           <ion-item ng-repeat="option in detail.options" >
             <h4>{{option.name}}</h4>

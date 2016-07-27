@@ -1,0 +1,41 @@
+<ion-view view-title="Login">
+  <ion-content scroll="false">
+
+    <section class="login-container">
+
+      <div class = "col header text-center">
+        <img class = "logo full-image" src="http://unlimiteddonuts.com/wp-content/uploads/2015/02/homer-simpson.jpg" />
+      </div>
+
+
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Username</span>
+          <input type="text" placeholder="Username" ng-model="user.username">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="Password" ng-model="user.password">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="login()">
+          Sign-In
+        </button>
+        <p class="text-center">
+          <a href="#/forgot-password">Forgot password</a>
+        </p>
+      </div>
+
+
+      <div class="button-bar">
+        <button class="button facebook icon-only ion-social-facebook" type="button" ></button>
+        <button class="button twitter icon-only ion-social-twitter" type="button"></button>
+        <button class="button google icon-only ion-social-googleplus" type="button"></button>
+        <button class="button wechat icon-only ion-social-wechat" type="button" ></button>
+      </div>
+
+    </section>
+
+  </ion-content>
+</ion-view>

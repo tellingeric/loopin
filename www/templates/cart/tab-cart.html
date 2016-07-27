@@ -7,32 +7,6 @@
       <button class="button button-small button-positive">Order Now</button>
       <button class="button button-small button-assertive" ng-click="RemoveAllItems()">Remove All</button>
     </div>
-    <ion-toggle ng-model="shouldShowDelete">
-      Show Delete?
-    </ion-toggle>
-
-
-    <!-- <ion-list show-delete="shouldShowDelete" >
-      <ion-item ng-repeat="item in orderedItems" class="item-thumbnail-left item-text-wrap item-button-right item-remove-animate">
-
-        <img ng-src="http://images.visitbeijing.com.cn/20150610/Img215165848.jpg" />
-
-        <h2>{{item.name}}</h2>
-        <p>{{item.description | limitTo: 80 }}{{item.description.length > 80 ? '...' : ''}}</p>
-
-
-        <ion-delete-button class="ion-minus-circled" ng-click="removeThis({{item}})"></ion-delete-button>
-
-
-
-
-
-      </ion-item>
-    </ion-list>
- -->
-
-
-
 
 
     <div class="list card" show-delete="true" ng-repeat="item in orderedItems">

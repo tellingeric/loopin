@@ -11,7 +11,7 @@ angular.module('LoopIn', [
 
   'jett.ionic.filter.bar',
 
-
+  'LoopIn.user',
   'LoopIn.cart',
   'LoopIn.settings',
   'LoopIn.events'
@@ -47,6 +47,7 @@ angular.module('LoopIn', [
       templateUrl:'templates/tabs.html'
     })
 
-  $urlRouterProvider.otherwise('/tab/events');
+
+  $urlRouterProvider.otherwise('/login');
 
 });
