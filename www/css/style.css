@@ -104,6 +104,7 @@
 .login-container > .img {
     -webkit-flex: 4;
     padding-top: 20px;
-    width: 50%;
-    height: auto;
+
+    height: 30%;
+    width: auto;
 }
