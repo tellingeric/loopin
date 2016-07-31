@@ -11,10 +11,12 @@ angular.module('LoopIn', [
 
   'jett.ionic.filter.bar',
 
+  'LoopIn.constant',
   'LoopIn.user',
   'LoopIn.cart',
   'LoopIn.settings',
   'LoopIn.events'
+
 
 ])
 
@@ -36,7 +38,8 @@ angular.module('LoopIn', [
   });
 })
 
-.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
+
+.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
 
   $ionicConfigProvider.platform.android.tabs.position('bottom');
 
@@ -48,6 +51,30 @@ angular.module('LoopIn', [
     })
 
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/events/features');
 
-});
+})
+
+
+.config(function ($httpProvider){
+  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+    console.log('interceptor');
+
+      return {
+          'request': function (config) {
+              config.headers = config.headers || {};
+              if ($localStorage.user.token) {
+                  config.headers['x-access-token'] = $localStorage.user.token;
+              }
+              return config;
+          },
+          'responseError': function(response) {
+              if(response.status === 401 || response.status === 403) {
+                console.log('redirect to login');
+                $location.path('/login');
+              }
+              return $q.reject(response);
+          }
+      };
+  }]);
+})

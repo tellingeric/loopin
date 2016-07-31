@@ -1,25 +1,28 @@
 <ion-view view-title="Login">
-  <ion-content>
+  <ion-content ng-init="clearUserInfo()">
 
     <section class="login-container">
 
-      <div class = "col header text-center">
-        <img class = "logo full-image" src="http://unlimiteddonuts.com/wp-content/uploads/2015/02/homer-simpson.jpg" />
-      </div>
-
+      <!-- <div class = "col header text-center">
+        <img class="item-avatar" src="http://unlimiteddonuts.com/wp-content/uploads/2015/02/homer-simpson.jpg" />
+      </div> -->
 
       <div class="list">
+
+        <img class="full-image login-avatar" src="../img/simpsons.jpg" />
+
         <label class="item item-input item-floating-label">
-          <span class="input-label">Username</span>
-          <input type="text" placeholder="Username" ng-model="user.username">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="Email" ng-model="user.email">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Password</span>
           <input type="password" placeholder="Password" ng-model="user.password">
         </label>
       </div>
+
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="login()">
+        <button class="button icon-left button-block button-positive ion-log-in" ng-click="login()">
           Sign-In
         </button>
         <p class="text-center">
@@ -27,13 +30,24 @@
         </p>
       </div>
 
+      <p class="text-center">Login With</p>
 
-      <div class="button-bar">
+      <div class="login-social">
+        <a href="" class="icon-button twitter"><i class="icon-twitter"></i></a>
+        <a href="" class="icon-button facebook"><i class="icon-facebook"></i></a>
+        <a href="" class="icon-button google-plus"><i class="icon-google-plus"></i></a>
+        <a href="" class="icon-button wechat"><i class="icon-wechat"></i></a>
+      </div>
+
+
+      <!-- <div class="button-bar">
         <button class="button facebook icon-only ion-social-facebook" type="button" ></button>
         <button class="button twitter icon-only ion-social-twitter" type="button"></button>
         <button class="button google icon-only ion-social-googleplus" type="button"></button>
         <button class="button wechat icon-only ion-social-wechat" type="button" ></button>
-      </div>
+      </div> -->
+
+
 
     </section>
 

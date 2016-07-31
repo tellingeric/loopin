@@ -3,6 +3,8 @@
 
   angular.module('LoopIn.events', [
 		'ionic',
+    'LoopIn.constant',
+    'ngStorage'
     ])
 
   .config(function($stateProvider) {
@@ -19,6 +21,7 @@
 
     .state('tabs.events.features', {
         url: '/features',
+        cache: false,
         views: {
             'tabs-events-features': {
                 templateUrl: 'templates/events/features/features.html',

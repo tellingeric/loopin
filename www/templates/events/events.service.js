@@ -1,13 +1,16 @@
 angular.module('LoopIn.events')
 
-  .factory('EventsService', function($http){
+  .factory('EventsService', function($http, $localStorage, domain, api){
     var events = [];
-    var http_url = 'https://loopin-api.herokuapp.com/api/events';
+    var http_url = domain + api.events;
     // var http_url = 'http://localhost:3000/api/events';
 
     return {
       all: function(){
-        return $http.get(http_url, {params: {} })
+        // console.log('email = ' + $localStorage.user.email)
+        // console.log('token = ' + $localStorage.user.token)
+
+        return $http.get(http_url, {})
           .success(function(data, status, headers, config){
             console.log('EVENTS GET ALL data success');
             // console.log(JSON.stringify(data));

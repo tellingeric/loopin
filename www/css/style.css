@@ -4,7 +4,7 @@
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }*/
 
-/* font awesome */
+ /*font awesome */
 
 @font-face {
     font-family: 'fontawesome';
@@ -17,47 +17,9 @@
     font-style: normal;
 }
 
-.ion-social-wechat:before {
+.icon-wechat:before {
     font-family: "fontawesome";
     content: "\f1d7";
-}
-
-
-/* SOCIAL COLORS */
-.facebook {
-  background-color: #0e1f56;
-  color: white;
-  transition: all ease 0.3s;
-}
-.facebook:active {
-  background-color: #3b5998;
-}
-
-.twitter {
-  background-color: #55ACEE;
-  color: white;
-  transition: all ease 0.3s;
-}
-.twitter:active {
-  background-color: #292f33;
-}
-
-.google {
-  background-color: #dd4b39;
-  color: white;
-  transition: all ease 0.3s;
-}
-.google:active {
-  background-color: #990000;
-}
-
-.wechat {
-  background-color: #24BF2F;
-  color: white;
-  transition: all ease 0.3s;
-}
-.wechat:active {
-  background-color: #55D95D;
 }
 
 /* ============================  */
@@ -90,21 +52,4 @@
 }
 .cart-item.ng-leave.ng-leave-active {
   opacity:0;
-}
-
-
-/*lOG IN */
-
-.login-container {
-    display: -webkit-flex;
-    -webkit-flex-direction: column;
-}
-
-
-.login-container > .img {
-    -webkit-flex: 4;
-    padding-top: 20px;
-
-    height: 30%;
-    width: auto;
 }

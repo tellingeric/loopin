@@ -1,6 +1,6 @@
 angular.module('LoopIn.events')
 
-.controller('featuresController', function($scope, $ionicLoading, $stateParams, $state, $ionicFilterBar, EventsService) {
+.controller('featuresController', function($scope, $ionicLoading, $stateParams, $state, $ionicFilterBar, $localStorage, EventsService) {
 
   $scope.events = [];
   $scope.event = EventsService.get($stateParams.event_id);
@@ -18,8 +18,11 @@ angular.module('LoopIn.events')
 
   $scope.getAllEvents = function() {
     $ionicLoading.show();
-    EventsService.all().success(function(response){
-      $scope.events = response;
+    EventsService.all().success(function(data){
+      $scope.events = data;
+      $ionicLoading.hide();
+    })
+    .error(function(data){
       $ionicLoading.hide();
     });
   };
