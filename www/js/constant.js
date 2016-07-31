@@ -2,8 +2,8 @@ angular.module('LoopIn.constant', [
   'ionic'
 ])
 
-// .constant('domain', 'https://loopin-api.herokuapp.com/')
-.constant('domain', 'http://localhost:3000/')
+.constant('domain', 'https://loopin-api.herokuapp.com/')
+// .constant('domain', 'http://localhost:3000/')
 
 
 .constant('api', {
