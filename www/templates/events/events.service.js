@@ -10,6 +10,7 @@ angular.module('LoopIn.events')
         // console.log('email = ' + $localStorage.user.email)
         // console.log('token = ' + $localStorage.user.token)
 
+        $http.defaults.headers.common['x-access-token'] = $localStorage.user.token
         return $http.get(http_url, {})
           .success(function(data, status, headers, config){
             console.log('EVENTS GET ALL data success');
