@@ -59,8 +59,9 @@ angular.module('LoopIn', [
 // commented for heroku reason
 
 .config(function ($httpProvider){
-  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
-  // $httpProvider.interceptors.push(['$location', '$localStorage', function($location, $localStorage) {
+
+
+  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$injector', function($q, $location, $localStorage, $injector) {
 
     console.log('interceptor');
 
@@ -75,10 +76,11 @@ angular.module('LoopIn', [
         'responseError': function(response) {
             if(response.status === 401 || response.status === 403) {
               console.log('redirect to login');
-              $location.path('/login');
+              // $location.path('/login');
+              $injector.get('$state').transitionTo('login');
+
             }
             return $q.reject(response);
-            // return response;
         }
       };
     }]);
