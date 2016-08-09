@@ -22,8 +22,9 @@
       </div>
 
       <div class="padding">
-        <button class="button button-block button-positive icon-left ion-log-in  button-assertive" ng-click="login()">
-          Sign-In
+        <button class="button button-block button-positive icon-left ion-log-in  button-assertive" ng-click="login()" ng-disabled="!showing">
+          <ion-spinner ng-hide="showing" class="spinner-energized"></ion-spinner>
+          <span class="button-text" ng-hide="!showing">Sign-In</span>
         </button>
         <p class="text-center">
           <a href="#/forgot-password">Forgot password</a>

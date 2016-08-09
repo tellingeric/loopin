@@ -60,6 +60,8 @@ angular.module('LoopIn', [
 
 .config(function ($httpProvider){
   $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+  // $httpProvider.interceptors.push(['$location', '$localStorage', function($location, $localStorage) {
+
     console.log('interceptor');
 
       return {
@@ -76,6 +78,7 @@ angular.module('LoopIn', [
               $location.path('/login');
             }
             return $q.reject(response);
+            // return response;
         }
       };
     }]);
