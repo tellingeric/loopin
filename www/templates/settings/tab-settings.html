@@ -8,5 +8,23 @@
       <button class="button button-big button-positive" ng-click="logout()">Logout</button>
 
     </div>
+
+
+
+    <p>Lat: {{geocode.lat()}} Lng: {{geocode.lng()}}</p>
+    <label class="item item-input">
+      <span class="input-label">Address</span>
+      <input type="text" ng-model="data.address" />
+    </label>
+
+    <button class="button assertive button-icon icon icon-left ion-navigate" ng-click="centerOnMe(false)" >Find By Address</button>
+
+
+    <button class="button assertive button-icon icon icon-left ion-navigate" ng-click="centerOnMe(true)">Find Me</button>
+
+    <div class=" card" style="width:300px;height:300px;" id="map" data-tap-disabled="true"></div>
+
+
+
   </ion-content>
 </ion-view>

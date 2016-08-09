@@ -51,33 +51,33 @@ angular.module('LoopIn', [
     })
 
 
-  // $urlRouterProvider.otherwise('/tab/events/features');
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/events/features');
+  // $urlRouterProvider.otherwise('/login');
 
 })
 
 // commented for heroku reason
-//
-// .config(function ($httpProvider){
-//   $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
-//     console.log('interceptor');
-//
-//       return {
-//         'request': function (config) {
-//             config.headers = config.headers || {};
-//             if ($localStorage.user.token) {
-//                 config.headers['x-access-token'] = $localStorage.user.token;
-//             }
-//             return config;
-//         },
-//         'responseError': function(response) {
-//             if(response.status === 401 || response.status === 403) {
-//               console.log('redirect to login');
-//               $location.path('/login');
-//             }
-//             return $q.reject(response);
-//         }
-//       };
-//     }]);
-//
-//   })
+
+.config(function ($httpProvider){
+  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+    console.log('interceptor');
+
+      return {
+        'request': function (config) {
+            config.headers = config.headers || {};
+            if ($localStorage.user.token) {
+                config.headers['x-access-token'] = $localStorage.user.token;
+            }
+            return config;
+        },
+        'responseError': function(response) {
+            if(response.status === 401 || response.status === 403) {
+              console.log('redirect to login');
+              $location.path('/login');
+            }
+            return $q.reject(response);
+        }
+      };
+    }]);
+
+  })
