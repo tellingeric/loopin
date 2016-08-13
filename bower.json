@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angular-local-storage": "^0.2.7",
-    "font-awesome": "fontawesome#^4.6.3"
+    "font-awesome": "fontawesome#^4.6.3",
+    "ngmap": "^1.17.3"
   }
 }

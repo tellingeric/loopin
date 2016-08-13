@@ -3,6 +3,7 @@
 
   angular.module('LoopIn.events', [
 		'ionic',
+    'ngMap',
     'LoopIn.constant',
     'ngStorage'
     ])
