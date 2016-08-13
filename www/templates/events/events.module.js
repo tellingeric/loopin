@@ -31,6 +31,16 @@
         }
     })
 
+    .state('tabs.events.features-location', {
+        url: '/features/location',
+        views: {
+            'tabs-events-features': {
+                templateUrl: 'templates/events/features/location-chooser.html',
+                controller:'featuresController'
+            }
+        }
+    })
+
     .state('tabs.events.features-details', {
         url: '/details/:event_id',
         views: {

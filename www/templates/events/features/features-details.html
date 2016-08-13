@@ -27,6 +27,16 @@
         <h4>price: {{product.unit_price}}</h4>
         <h4>sold: {{product.num_sold}}</h4>
 
+        <button class="button button-small button-assertive" side="right" ng-click="orderThis(product)">Add</button>
+
+        <!-- <div class="item item-input-inset"> -->
+          <label class="item-input-wrapper">
+            <span class="input-label">Q:</span>
+            <input type="number" ng-model="product.orderedQuantity" min="1">
+          </label>
+        <!-- </div> -->
+
+
       </ion-item>
 
       <ion-item class="item-accordion" ng-show="isProductDetailShown(product)" >

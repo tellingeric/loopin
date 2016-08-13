@@ -14,25 +14,25 @@
       <div class="item cart-item item-thumbnail-left animated bounceInLeft" >
         <img src="http://i.imgur.com/6zQAymt.jpg" />
 
-        <h2>{{ item.name }}</h2>
+        <h2>{{ item.product_id.name }}</h2>
         <h3>Options:</h3>
 
-        <p>{{ item.description }}</p>
+        <p>{{ item.product_id.details[0].description }}</p>
         <a class="subdued">
-          Quantity: 10
+          Quantity: {{item.orderedQuantity}}
         </a>
       </div>
 
-    <div class="item tabs tabs-secondary tabs-icon-left">
+    <div class="item tabs tabs-secondary tabs-icon-left" ng-click="changeQuantityAdd(item)" >
       <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
         <i class="icon ion-plus-circled balanced"></i> More
       </a>
 
-      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="changeQuantityMinus(item)" >
         <i class="icon ion-minus-circled assertive"></i> Less
       </a>
 
-      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="removeThis({{item}})">
+      <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="removeThis(item)">
         <i class="icon ion-trash-a"></i> Remove
       </a>
 

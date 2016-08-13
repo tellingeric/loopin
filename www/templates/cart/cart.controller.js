@@ -8,7 +8,6 @@ angular.module('LoopIn.cart')
   };
 
   $scope.removeThis = function(item) {
-    console.log('!!!!');
     OrderedItems.remove(item);
     $scope.orderedItems = OrderedItems.all();
   };
@@ -16,7 +15,7 @@ angular.module('LoopIn.cart')
   $scope.TotalPrice = function(){
     var sumPrice = 0;
     angular.forEach($scope.orderedItems, function(item) {
-      sumPrice += item.price;
+      sumPrice += item.product_id.details[0].price * item.orderedQuantity;
     });
     return sumPrice.toFixed(2);
   };
@@ -24,5 +23,15 @@ angular.module('LoopIn.cart')
   $scope.badgeCount = function(){
     return $scope.orderedItems.length > 99 ? "..." : $scope.orderedItems.length;
   };
+
+  $scope.changeQuantityAdd = function(item){
+    item.orderedQuantity++;
+  }
+
+  $scope.changeQuantityMinus = function(item){
+    if(item.orderedQuantity > 1){
+      item.orderedQuantity = Number(item.orderedQuantity) -1;
+    }
+  }
 
 })
