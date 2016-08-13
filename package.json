@@ -21,8 +21,15 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
+    "cordova-plugin-x-toast",
     "ionic-plugin-keyboard",
-    "cordova-plugin-x-toast"
+    {
+      "variables": {
+        "SENDER_ID": "234462272061"
+      },
+      "locator": "phonegap-plugin-push",
+      "id": "phonegap-plugin-push"
+    }
   ],
   "cordovaPlatforms": [
     "android"
