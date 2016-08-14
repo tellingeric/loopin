@@ -1,6 +1,19 @@
 angular.module('LoopIn.cart')
-.controller('cartController', function($scope, OrderedItems) {
+.controller('cartController', function($scope, $state, OrderedItems) {
   $scope.orderedItems = OrderedItems.all();
+
+  $scope.shownPm = null;
+  $scope.paymentMethods = [{
+    method: "Pay by cash",
+    icon: "ion-cash",
+    text: "Please prepare for the exact amount, change will be limited.<br>请自备零钱，谢谢"
+  }, {
+    method: "Pay by card",
+    icon: "ion-card",
+    text: "card #"
+  }];
+
+
 
   $scope.RemoveAllItems = function(){
     OrderedItems.removeAll();
@@ -33,5 +46,23 @@ angular.module('LoopIn.cart')
       item.orderedQuantity = Number(item.orderedQuantity) -1;
     }
   }
+
+  $scope.gotoPayment = function(){
+    $state.go('tabs.cart-payment');
+  }
+
+
+  $scope.togglePaymentMethod = function(pm) {
+   if ($scope.isPaymentMethodShown(pm)) {
+     $scope.shownPm = null;
+   } else {
+     $scope.shownPm = pm;
+   }
+ };
+
+ $scope.isPaymentMethodShown = function(pm) {
+   return $scope.shownPm === pm;
+ };
+
 
 })

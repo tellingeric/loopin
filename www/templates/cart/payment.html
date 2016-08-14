@@ -1,0 +1,31 @@
+<ion-view view-title="Payment">
+
+  <ion-nav-buttons side="right">
+    <button class="button">ORDER NOW</button>
+  </ion-nav-buttons>
+
+
+  <ion-content class="padding">
+
+    <h3>Order Review</h3>
+
+
+
+      <ion-list>
+
+        <div ng-repeat="pm in paymentMethods">
+
+          <ion-item class="item" ng-click="togglePaymentMethod(pm)" ng-class="{active: isPaymentMethodShown(pm)}">
+            <i class="icon {{pm.icon}}"></i>{{pm.method}}
+          </ion-item>
+
+          <ion-item class="item-accordion" ng-show="isPaymentMethodShown(pm)">
+            <h2>{{pm.text}}</h2>
+          </ion-item>
+
+        </div>
+      </ion-list>
+
+
+  </ion-content>
+</ion-view>

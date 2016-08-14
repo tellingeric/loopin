@@ -15,6 +15,18 @@
 	        }
       	}
     	})
+
+      .state('tabs.cart-payment', {
+	      url:'/cart/payment',
+	      views:{
+	        'tab-cart':{
+	          templateUrl:'templates/cart/payment.html',
+	          controller:'cartController'
+	        }
+      	}
+    	})
+
+
   })
 
 // })();
