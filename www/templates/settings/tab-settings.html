@@ -3,7 +3,8 @@
     <h2>Settings</h2>
 
     <div>
-      <p>token: {{token | limitTo: 80 }}{{token.length > 80 ? '...' : ''}}</p>
+      <p>email: {{user.email}}</p>
+      <p>token: {{user.token | limitTo: 80 }}{{user.token.length > 80 ? '...' : ''}}</p>
 
       <button class="button button-big button-positive" ng-click="logout()">Logout</button>
 

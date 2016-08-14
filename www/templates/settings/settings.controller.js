@@ -1,7 +1,9 @@
 angular.module('LoopIn.settings')
   .controller('settingsController', function($scope, $state, $localStorage, UserService, $ionicLoading, $compile) {
 
-    $scope.token = $localStorage.user.token;
+    $scope.user = {};
+    $scope.user.email = $localStorage.user.email
+    $scope.user.token = $localStorage.user.token;
 
     $scope.logout = function(){
       $localStorage.user.token = UserService.logout();

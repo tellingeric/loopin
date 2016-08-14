@@ -70,6 +70,19 @@
             }
         }
     })
+
+    .state('tabs.events.map', {
+        url: '/map',
+        views: {
+            'tabs-events-map': {
+                templateUrl: 'templates/events/map/map.html',
+                controller:'mapController'
+            }
+        }
+    })
+
+
+
   })
 
 // })();

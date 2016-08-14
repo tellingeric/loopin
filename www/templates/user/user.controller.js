@@ -10,6 +10,7 @@ angular.module('LoopIn.user')
 
       UserService.login($scope.user.email, $scope.user.password).success(function(data){
         $localStorage.user.token = data.token;
+        $localStorage.user.email = $scope.user.email;
         $state.go('tabs.events.features');
         $scope.showing = true;
       })
