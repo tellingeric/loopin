@@ -11,20 +11,53 @@
 	      views:{
 	        'tab-cart':{
 	          templateUrl:'templates/cart/tab-cart.html',
-	          controller:'cartController'
+	          abstract: true
 	        }
       	}
     	})
 
-      .state('tabs.cart-payment', {
-	      url:'/cart/payment',
+      .state('tabs.cart.current', {
+        url: '/current',
+        views: {
+          'tabs-cart-current': {
+            templateUrl: 'templates/cart/current.html',
+            controller: 'cartController'
+          }
+        }
+      })
+
+
+      .state('tabs.cart.current-payment', {
+	      url:'/current/payment.html',
 	      views:{
-	        'tab-cart':{
+	        'tabs-cart-current':{
 	          templateUrl:'templates/cart/payment.html',
 	          controller:'cartController'
 	        }
       	}
     	})
+
+
+      .state('tabs.cart.history', {
+        url: '/history',
+        views: {
+          'tabs-cart-history': {
+            templateUrl: 'templates/cart/history.html',
+            controller: 'cartController'
+          }
+        }
+      })
+
+
+      .state('tabs.cart.history-details', {
+          url: '/history/:order_id',
+          views: {
+              'tabs-cart.history': {
+                  templateUrl: 'templates/cart/order-details.html',
+                  controller:'featuresController'
+              }
+          }
+      })
 
 
   })

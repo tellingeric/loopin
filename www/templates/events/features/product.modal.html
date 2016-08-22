@@ -1,0 +1,48 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive fix-buttons" >
+    <h1 class="title">{{product.product_id.name}}</h1>
+
+
+    <a class="button" ng-click="closeModal()">Cancel</a>
+    <a class="button" ng-click="orderThis(product)">Add</a>
+
+
+  </ion-header-bar>
+
+  <ion-content>
+
+    <h4>Options:</h4>
+      <ion-list ng-repeat="detail in product.product_id.details" >
+        <div>
+          <p>
+            Description: {{detail.description}}
+          </p>
+          <p>
+            Price: {{detail.price}}
+          </p>
+
+          <label class="item-input-wrapper">
+            <span class="input-label">Q:</span>
+            <input type="number" ng-model="product.orderedQuantity" min="1">
+          </label>
+
+
+        <ion-item ng-repeat="option in detail.options" >
+          <h4>{{option.name}}</h4>
+          <div ng-switch on="{{option.isMultiple}}">
+            <div ng-switch-when="true">
+              <ion-checkbox ng-repeat="sel in option.selections" >
+                {{sel}}
+              </ion-checkbox>
+            </div>
+            <div ng-switch-default>
+              <ion-radio ng-repeat="sel in option.selections" class="icon-left" >
+                {{sel}}
+              </ion-radio>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
+</ion-modal-view>

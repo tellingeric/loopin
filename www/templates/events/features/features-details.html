@@ -15,8 +15,28 @@
       </ion-item>
     </ion-list>
 
-
     <h2>Products</h2>
+
+
+    <div class="row" style="flex-wrap: wrap">
+      <div class="col col-50" ng-repeat="product in event.products">
+        <div class="card" ng-click="openModal(product)">
+
+          <div class="item item-image">
+            <img ng-src="{{product.product_id.details[0].img_url}}"  />
+          </div>
+
+          <div class="item">
+            <h2>{{product.product_id.name}}</h2>
+            <h4>${{product.unit_price}}</h4>
+            <h4>sold: {{product.num_sold}}</h4>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<!--
     <div class="list card" ng-repeat="product in event.products" >
 
       <ion-item class="item item-thumbnail-left"  ng-click="toggleProduct(product)" ng-class="{active: isProductDetailShown(product)}" >
@@ -29,12 +49,10 @@
 
         <button class="button button-small button-assertive" side="right" ng-click="orderThis(product)">Add</button>
 
-        <!-- <div class="item item-input-inset"> -->
           <label class="item-input-wrapper">
             <span class="input-label">Q:</span>
             <input type="number" ng-model="product.orderedQuantity" min="1">
           </label>
-        <!-- </div> -->
 
 
       </ion-item>
@@ -70,7 +88,7 @@
 
       </ion-item>
 
-    </div>
+    </div> -->
 
   </ion-content>
 </ion-view>

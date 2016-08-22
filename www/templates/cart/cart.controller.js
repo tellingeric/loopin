@@ -48,7 +48,7 @@ angular.module('LoopIn.cart')
   }
 
   $scope.gotoPayment = function(){
-    $state.go('tabs.cart-payment');
+    $state.go('tabs.cart.current-payment');
   }
 
 
