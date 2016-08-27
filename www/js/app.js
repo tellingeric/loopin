@@ -76,6 +76,13 @@ angular.module('LoopIn', [
       return {
         'request': function (config) {
             config.headers = config.headers || {};
+
+            if (typeof($localStorage.user) != "undefined") {
+              $localStorage = $localStorage.$default({
+                user: {}
+              });
+            }
+
             if ($localStorage.user.token) {
                 config.headers['x-access-token'] = $localStorage.user.token;
             }
