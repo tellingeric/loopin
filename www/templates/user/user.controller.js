@@ -5,12 +5,12 @@ angular.module('LoopIn.user')
     $scope.showing = true;
 
     $scope.login = function(){
-      console.log("TRY --> LOGIN user: " + $scope.user.email + " - PW: " + $scope.user.password);
+      console.log("TRY --> LOGIN user: " + $scope.user.username + " - PW: " + $scope.user.password);
       $scope.showing = false;
 
-      UserService.login($scope.user.email, $scope.user.password).success(function(data){
+      UserService.login($scope.user.username, $scope.user.password).success(function(data){
         $localStorage.user.token = data.token;
-        $localStorage.user.email = $scope.user.email;
+        $localStorage.user.username = $scope.user.username;
         $state.go('tabs.events.features');
         $scope.showing = true;
       })

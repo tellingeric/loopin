@@ -6,11 +6,11 @@ angular.module('LoopIn.user')
     });
 
     return {
-      login: function(email, pw){
-        $localStorage.user.email = email;
+      login: function(uname, pw){
+        $localStorage.user.username = uname;
 
         return $http.post(domain + api.login, {
-            email: email,
+            username: uname,
             password: pw
         })
           .success(function(data, status, headers, config){
