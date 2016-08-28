@@ -77,7 +77,7 @@ angular.module('LoopIn', [
         'request': function (config) {
             config.headers = config.headers || {};
 
-            if (typeof($localStorage.user) != "undefined") {
+            if (typeof($localStorage.user) == "undefined") {
               $localStorage = $localStorage.$default({
                 user: {}
               });

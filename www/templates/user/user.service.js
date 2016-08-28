@@ -8,7 +8,7 @@ angular.module('LoopIn.user')
     return {
       login: function(uname, pw){
         $localStorage.user.username = uname;
-
+        console.log(domain + api.login)
         return $http.post(domain + api.login, {
             username: uname,
             password: pw
