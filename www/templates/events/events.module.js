@@ -73,6 +73,7 @@
 
     .state('tabs.events.map', {
         url: '/map',
+        cache: false,
         views: {
             'tabs-events-map': {
                 templateUrl: 'templates/events/map/map.html',
