@@ -1,15 +1,38 @@
 angular.module('LoopIn.events')
 
-.controller('vendorsController', function($scope, $state, $localStorage, $ionicFilterBar) {
-   $scope.vendors = [
-     {id:1, name:'Land of Plenty', address:'208 E 58th St, New York, NY 10022', phone:'2123088788'},
-     {id:2, name:'Hunan House', address:'40W 56th St, New York, NY 10019', phone:'2122132299'}
-   ];
+.controller('vendorsController', function(
+  $scope,
+  $state,
+  $stateParams,
+  $localStorage,
+  $ionicFilterBar,
+  $ionicLoading,
+  VendorsService
+
+) {
+
+   $scope.vendors = [];
+   $scope.vendor = VendorsService.get($stateParams.vendor_id);
+
    $scope.filterBarInstance;
 
-   $scope.rememberVendor = function(vendor){
-     $localStorage.vendor  = vendor;
-   }
+
+   $scope.getAllVendors = function() {
+     $ionicLoading.show();
+     VendorsService.all().success(function(data){
+       $scope.vendors = data;
+       $ionicLoading.hide();
+     })
+     .error(function(data){
+       $ionicLoading.hide();
+     });
+   };
+
+
+
+  //  $scope.rememberVendor = function(vendor){
+  //    $localStorage.vendor  = vendor;
+  //  }
 
    $scope.showFilterBar = function() {
      $scope.filterBarInstance = $ionicFilterBar.show({
@@ -21,8 +44,8 @@ angular.module('LoopIn.events')
      });
    };
 
-   $scope.showVendorMenu = function(vendorId){
-     $state.go('tabs.events.vendors-menu', {
+   $scope.showVendorDetails = function(vendorId){
+     $state.go('tabs.events.vendor-details', {
  			vendor_id: vendorId
  		});
    }

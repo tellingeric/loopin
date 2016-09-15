@@ -53,6 +53,7 @@
 
     .state('tabs.events.vendors', {
         url: '/vendors',
+        cache: false,
         views: {
             'tabs-events-vendors': {
                 templateUrl: 'templates/events/vendors/vendors.html',
@@ -61,12 +62,12 @@
         }
     })
 
-    .state('tabs.events.vendors-menu', {
+    .state('tabs.events.vendor-details', {
         url: '/vendors/:vendor_id',
         views: {
             'tabs-events-vendors': {
-                templateUrl: 'templates/events/vendors/vendors-menu.html',
-                controller:'menuController'
+                templateUrl: 'templates/events/vendors/vendor-details.html',
+                controller:'vendorsController'
             }
         }
     })

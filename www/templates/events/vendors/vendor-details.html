@@ -1,5 +1,5 @@
 
-<ion-view view-title="Menu">
+<ion-view view-title="{{vendor.name}}">
 
   <ion-nav-buttons side="right">
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
@@ -7,7 +7,12 @@
 
   <ion-content class="has-tabs-top padding">
 
-    <ion-list>
+    <h3>{{vendor.phone}}</h3>
+
+    <h3>{{vendor.type}}</h3>
+
+
+    <!-- <ion-list>
       <div ng-repeat="menuItem in menu">
 
         <ion-item class="item"  ng-click="toggleMenuItem(menuItem)" ng-class="{active: isOptionsShown(menuItem)}">
@@ -30,6 +35,8 @@
 
         </ion-item>
       </div>
-    </ion-list>
+    </ion-list> -->
+
+
   </ion-content>
 </ion-view>

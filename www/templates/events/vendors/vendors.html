@@ -1,4 +1,4 @@
-<ion-view view-title="Vendors">
+<ion-view view-title="Vendors" ng-init="getAllVendors()">
 
   <ion-nav-buttons side="right">
     <button class="button button-icon ion-android-search" ng-click="showFilterBar()"></button>
@@ -6,10 +6,15 @@
 
     <ion-content class="has-tabs-top padding">
       <ion-list>
-        <ion-item class="item-remove-animate" collection-repeat="vendor in vendors" type="item-text-wrap" ng-click="showVendorMenu(vendor.id)" >
-          <h3>{{vendor.name}}   {{vendor.id}}</h3>
+        <ion-item class="item-remove-animate" ng-repeat="vendor in vendors" type="item-text-wrap" ng-click="showVendorDetails(vendor._id)" >
+
+          <!-- <h3>{{vendor.name}}   {{vendor.id}}</h3>
           <p>{{vendor.phone}}</p>
-          <p>{{vendor.address}}</p>
+          <p>{{vendor.address}}</p> -->
+
+          <h3>{{vendor.name}}</h3>
+
+
         </ion-item>
       </ion-list>
     </ion-content>
