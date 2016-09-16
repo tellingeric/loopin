@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive fix-buttons" >
+    <h3 class="title">Forget Password</h3>
+
+
+    <a class="button" ng-click="closeModal()">Cancel</a>
+    <a class="button" ng-click="Reset()">Reset</a>
+
+
+  </ion-header-bar>
+
+  <ion-content>
+
+    <div class="list" >
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="text" placeholder="Email" ng-model="user.email">
+      </label>
+
+      <button class=" button button-full icon-center ion-log-in  button-assertive" ng-click="" ng-disabled="!showing">
+        <ion-spinner ng-hide="showing" class="spinner-energized "></ion-spinner>
+        <span class="button-text" ng-hide="!showing">Reset</span>
+      </button>
+
+    </div>
+
+  </ion-content>
+</ion-modal-view>

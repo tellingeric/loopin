@@ -3,7 +3,6 @@
 .login-container {
     display: -webkit-flex;
     -webkit-flex-direction: column;
-
 }
 
 /*
@@ -23,8 +22,17 @@
   background-repeat: no-repeat;
   background-position: 50%;
   border-radius: 50%;
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
+}
+
+.register-avatar {
+  display:block;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 80%;
+  height: 80%;
 }
 
 .login-social {
@@ -47,6 +55,7 @@
 	    -ms-user-select: none;
 	        user-select: none;
 	width: 3.6rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .icon-button i {

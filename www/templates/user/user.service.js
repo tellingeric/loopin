@@ -25,6 +25,26 @@ angular.module('LoopIn.user')
 
       },
 
+      registerUser: function(uname, pw, email){
+        $localStorage.user.username = uname;
+        console.log(domain + api.register)
+        return $http.post(domain + api.register, {
+            username: uname,
+            password: pw,
+            email: email
+        })
+          .success(function(data, status, headers, config){
+            console.log('USER register Successfully');
+            // token saved to local storage in controller
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('USER register failed');
+            return data;
+          })
+
+      },
+
       logout: function(){
         return '';
       }

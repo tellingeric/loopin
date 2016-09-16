@@ -1,56 +1,89 @@
-<ion-view view-title="Login">
+<ion-view view-title="LoopIn" hide-nav-bar="false" >
   <ion-content ng-init="clearUserInfo()">
 
-    <section class="login-container">
+    <div class="login-container">
+      <div class="list" >
 
-      <!-- <div class = "col header text-center">
-        <img class="item-avatar" src="http://unlimiteddonuts.com/wp-content/uploads/2015/02/homer-simpson.jpg" />
-      </div> -->
+        <div class="item tabs tabs-secondary tabs-striped " >
 
-      <div class="list">
+          <a class="tab-item" ng-click="showRegisterForm(false)" >
+            <i class="">Login</i>
+          </a>
 
-        <img class="full-image login-avatar" src="../img/simpsons.jpg" />
+          <a class="tab-item" ng-click="showRegisterForm(true)" >
+            <i class="">Register</i>
+          </a>
 
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Username</span>
-          <input type="text" placeholder="Username" ng-model="user.username">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Password</span>
-          <input type="password" placeholder="Password" ng-model="user.password">
-        </label>
+        </div>
+
+
+        <div ng-show="!register">
+          <img class="full-image login-avatar" src="../img/yao-ming-fuck-that-guy-rage-face.png" />
+
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Username</span>
+            <input type="text" placeholder="Username" ng-model="user.username">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+
+          <button class=" button button-full icon-center ion-log-in  button-assertive" ng-click="login()" ng-disabled="!showing">
+            <ion-spinner ng-hide="showing" class="spinner-energized "></ion-spinner>
+            <span class="button-text" ng-hide="!showing">Sign In</span>
+          </button>
+
+        </div>
+
+        <div ng-show="register">
+          <img class="full-image register-avatar" src="../img/welcome-16.png" />
+
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Username</span>
+            <input type="text" placeholder="Username" ng-model="user.username">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="user.email">
+          </label>
+
+          <button class=" button button-full icon-center ion-log-in  button-assertive" ng-click="createUser()" ng-disabled="!showing">
+            <ion-spinner ng-hide="showing" class="spinner-energized "></ion-spinner>
+            <span class="button-text" ng-hide="!showing">Register</span>
+          </button>
+
+        </div>
+
       </div>
 
-      <div class="padding">
-        <button class="button button-block button-positive icon-left ion-log-in  button-assertive" ng-click="login()" ng-disabled="!showing">
-          <ion-spinner ng-hide="showing" class="spinner-energized"></ion-spinner>
-          <span class="button-text" ng-hide="!showing">Sign-In</span>
-        </button>
+      <div class="">
         <p class="text-center">
-          <a href="#/forgot-password">Forgot password</a>
+          <a href="" ng-click="openModal()">Forgot password</a>
         </p>
+
+        <p class="text-center">Login With</p>
+
+        <div class="login-social text-center">
+          <a href="" class="icon-button twitter"><i class="icon-twitter"></i></a>
+          <a href="" class="icon-button facebook"><i class="icon-facebook"></i></a>
+          <a href="" class="icon-button google-plus"><i class="icon-google-plus"></i></a>
+          <a href="" class="icon-button wechat"><i class="icon-wechat"></i></a>
+        </div>
+
+
       </div>
 
-      <p class="text-center">Login With</p>
-
-      <div class="login-social">
-        <a href="" class="icon-button twitter"><i class="icon-twitter"></i></a>
-        <a href="" class="icon-button facebook"><i class="icon-facebook"></i></a>
-        <a href="" class="icon-button google-plus"><i class="icon-google-plus"></i></a>
-        <a href="" class="icon-button wechat"><i class="icon-wechat"></i></a>
-      </div>
-
-
-      <!-- <div class="button-bar">
-        <button class="button facebook icon-only ion-social-facebook" type="button" ></button>
-        <button class="button twitter icon-only ion-social-twitter" type="button"></button>
-        <button class="button google icon-only ion-social-googleplus" type="button"></button>
-        <button class="button wechat icon-only ion-social-wechat" type="button" ></button>
-      </div> -->
 
 
 
-    </section>
+    </div>
+
+
 
   </ion-content>
 </ion-view>
