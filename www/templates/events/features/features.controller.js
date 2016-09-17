@@ -120,8 +120,9 @@ angular.module('LoopIn.events')
     //  };
 
 
-     $scope.orderThis = function(product){
+     $scope.orderThis = function(product, event_id){
 
+       product.event = event_id;
        if(product.orderedQuantity) OrderedItems.add(product);
 
       //  $scope.toggleProduct(null);

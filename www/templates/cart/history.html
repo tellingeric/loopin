@@ -1,9 +1,23 @@
 <ion-view view-title="Orders">
-  <ion-content class="padding">
+  <ion-content class="padding" ng-init="getOrderHistory()">
 
     <h3>show the historical orders</h3>
     <h3>highlight the active orders</h3>
     <h3>and also enable tracking for the current orders</h3>
+
+
+    <div ng-repeat="order in historicalOrders">
+      <div class="card" ng-click="" >
+
+        <a class="item">
+          <h4>{{order.order_date}}</h4>
+        </a>
+        
+      </div>
+
+    </div>
+
+
 
 
   </ion-content>

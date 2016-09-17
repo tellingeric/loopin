@@ -1,5 +1,11 @@
 angular.module('LoopIn.cart')
-.controller('cartController', function($scope, $state, OrderedItems) {
+.controller('cartController', function(
+  $scope,
+  $state,
+  $ionicPopup,
+  OrderedItems,
+  HistoricalOrders
+) {
   $scope.orderedItems = OrderedItems.all();
 
   $scope.shownPm = null;
@@ -63,6 +69,26 @@ angular.module('LoopIn.cart')
  $scope.isPaymentMethodShown = function(pm) {
    return $scope.shownPm === pm;
  };
+
+ $scope.getOrderHistory = function(){
+   HistoricalOrders.all().success(function(data){
+     $scope.historicalOrders = data;
+   });
+ };
+
+ $scope.createOrder = function(){
+   OrderedItems.orderNow().success(function(data){
+
+     var alertPopup = $ionicPopup.alert({
+       title: 'Order Success!',
+       template: 'Thank you'
+     });
+
+     $scope.RemoveAllItems();
+     
+   })
+
+ }
 
 
 })

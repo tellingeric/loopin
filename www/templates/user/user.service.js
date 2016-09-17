@@ -47,6 +47,18 @@ angular.module('LoopIn.user')
 
       logout: function(){
         return '';
+      },
+
+      getUserInfo: function(){
+        return $http.get(domain + api.me, {})
+          .success(function(data, status, headers, config){
+            // token saved to local storage in controller
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            return data;
+          })
+
       }
 
 

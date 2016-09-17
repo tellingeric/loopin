@@ -18,8 +18,17 @@ angular.module('LoopIn.user')
       $scope.showing = false;
 
       UserService.login($scope.user.username, $scope.user.password).success(function(data){
+
+        UserService.getUserInfo().success(function(data){
+          // console.log(JSON.stringify(data));
+          $localStorage.user._id = data._id;
+          $localStorage.user.email = data.email;
+          $localStorage.user.username = data.username;
+          
+        });
+
         $localStorage.user.token = data.token;
-        $localStorage.user.username = $scope.user.username;
+
         $state.go('tabs.events.features');
         $scope.showing = true;
       })

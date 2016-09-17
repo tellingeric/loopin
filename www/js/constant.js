@@ -9,7 +9,11 @@ angular.module('LoopIn.constant', [
 .constant('api', {
   'login' : 'login',
   'register' : 'register',
+  'me': 'api/me',
   'events' : 'api/events',
-  'vendors': 'api/vendors'
+  'vendors': 'api/vendors',
+  'orders': 'api/orders',
+  'historicalOrders': 'api/orders/byUser/'
+
 
 })

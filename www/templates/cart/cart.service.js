@@ -1,11 +1,12 @@
 angular.module('LoopIn.cart')
 
-  .factory('OrderedItems', function($localStorage) {
+  .factory('OrderedItems', function($localStorage, $http, domain, api) {
     $localStorage = $localStorage.$default({
       orderedItems: []
     });
 
     console.log('CART SERVICE Init');
+
 
     return {
       all: function() {
@@ -22,6 +23,73 @@ angular.module('LoopIn.cart')
       },
       count: function() {
         return $localStorage.orderedItems.length;
+      },
+
+
+      orderNow: function(){
+        var order = {};
+        order.products = [];
+
+        angular.forEach($localStorage.orderedItems, function(item) {
+          order.products.push({
+            event: item.event,
+            num_sold: item.num_sold,
+            unit_price: item.unit_price,
+            product_id: item.product_id._id,
+            product_vid: item.product_vid,
+            options: []
+          });
+        });
+
+
+        order.delivery_address = {
+          street1 : 'cao in ma b',
+          street2 : 'cao in ma b',
+          city : 'cao in ma b',
+          state : 'cao',
+          zipCode : '6666',
+          country : 'cnm'
+        };
+
+        order.buyer = $localStorage.user._id;
+        order.order_date = Date.now();
+
+
+        return $http.post(domain + api.orders, order)
+          .success(function(data, status, headers, config){
+            console.log('ORDER post success');
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('ORDER post error');
+            console.log(JSON.stringify(data));
+          });
       }
+
+
+
+    };
+  })
+
+  .factory('HistoricalOrders', function($localStorage, $http, domain, api) {
+
+    return {
+      all: function() {
+
+        $http.defaults.headers.common['x-access-token'] = $localStorage.user.token
+
+        return $http.get(domain + api.historicalOrders + $localStorage.user._id, {})
+          .success(function(data, status, headers, config){
+            console.log('ORDERS GET ALL data success');
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('data error');
+          });
+
+
+      }
+
+
     };
   })

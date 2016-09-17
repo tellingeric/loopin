@@ -29,17 +29,13 @@ angular.module('LoopIn.events')
 
   .factory('VendorsService', function($http, $localStorage, domain, api){
     var vendors = [];
-    var http_url = domain + api.vendors;
-    // var http_url = 'http://localhost:3000/api/events';
 
     return {
       all: function(){
-        // console.log('email = ' + $localStorage.user.email)
-        // console.log('token = ' + $localStorage.user.token)
 
         $http.defaults.headers.common['x-access-token'] = $localStorage.user.token
 
-        return $http.get(http_url, {})
+        return $http.get(domain + api.vendors, {})
           .success(function(data, status, headers, config){
             console.log('Vendors GET ALL data success');
             // console.log(JSON.stringify(data));
