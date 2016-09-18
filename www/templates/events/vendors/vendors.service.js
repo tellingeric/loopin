@@ -38,8 +38,11 @@ angular.module('LoopIn.events')
         return $http.get(domain + api.vendors, {})
           .success(function(data, status, headers, config){
             console.log('Vendors GET ALL data success');
-            // console.log(JSON.stringify(data));
             vendors = data;
+            angular.forEach(vendors, function(v) {
+              if (v.img_path) v.img_path = v.img_path.replace("public/", domain);
+            });
+
             return data;
           })
           .error(function(data, status, headers, config){

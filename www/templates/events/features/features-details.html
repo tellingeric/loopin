@@ -1,12 +1,69 @@
 
+<style>
+  /* CORE */
+  .item-expand {
+    position: relative;
+    width: 100%;
+    max-height: 70px;
+    transition: max-height 0.1s ease-out;
+    overflow: hidden;
+  }
+
+  .item-expand.inactive:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 15px;
+    width: 100%;
+    display: block;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0, rgba(255, 255, 255, 0)),
+      color-stop(1, rgba(255, 255, 255, 1))
+    );
+    background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  }
+
+  .item-expand.active {
+    max-height: 700px;
+    transition: max-height 0.3s ease-out;
+  }
+
+
+  /* DEMO */
+  .item-expand-footer {
+    color: red;
+    margin-top: 10px;
+  }
+
+  .item-expand-footer i {
+    margin-right: 10px;
+  }
+</style>
+
+
 <ion-view view-title="{{event.name}}">
   <ion-content class="has-tabs-top padding">
 
+    <div >
+      <div ng-class="isDescShown(event.description) ? 'item-expand active' : 'item-expand inactive'">
+        <h2>Description</h2>
+        <p>{{ event.description }}</p>
+      </div>
+      <div ng-click="toggleDesc(event.description)" class="item-expand-footer">
+        <!-- <i ng-class="isDescShown(item) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"> -->
+          {{ isDescShown(event.description) ? 'Less' : 'More' }}
+        <!-- </i> -->
+      </div>
+    </div>
 
-    <h2>Description</h2>
-    <p>
-      {{event.description}}
-    </p>
 
     <h2>Delivery Schedule</h2>
     <ion-list>
@@ -23,7 +80,7 @@
         <div class="card" ng-click="openModal(product)">
 
           <div class="item item-image">
-            <img ng-src="{{product.product_id.details[0].img_url}}"  />
+            <img ng-src="{{product.product_id.details[0].img_path}}"  />
           </div>
 
           <div class="item">
@@ -36,59 +93,8 @@
       </div>
     </div>
 
-<!--
-    <div class="list card" ng-repeat="product in event.products" >
-
-      <ion-item class="item item-thumbnail-left"  ng-click="toggleProduct(product)" ng-class="{active: isProductDetailShown(product)}" >
-
-        <img ng-src="{{product.product_id.details[0].img_url}}" />
-
-        <h3>name: {{product.product_id.name}}</h3>
-        <h4>price: {{product.unit_price}}</h4>
-        <h4>sold: {{product.num_sold}}</h4>
-
-        <button class="button button-small button-assertive" side="right" ng-click="orderThis(product)">Add</button>
-
-          <label class="item-input-wrapper">
-            <span class="input-label">Q:</span>
-            <input type="number" ng-model="product.orderedQuantity" min="1">
-          </label>
 
 
-      </ion-item>
-
-      <ion-item class="item-accordion" ng-show="isProductDetailShown(product)" >
-
-        <h4>Options:</h4>
-        <ion-list ng-repeat="detail in product.product_id.details" >
-          <div>
-            <p>
-              Description: {{detail.description}}
-            </p>
-            <p>
-              Price: {{detail.price}}
-            </p>
-
-          <ion-item ng-repeat="option in detail.options" >
-            <h4>{{option.name}}</h4>
-            <div ng-switch on="{{option.isMultiple}}">
-              <div ng-switch-when="true">
-                <ion-checkbox ng-repeat="sel in option.selections" >
-                  {{sel}}
-                </ion-checkbox>
-              </div>
-              <div ng-switch-default>
-                <ion-radio ng-repeat="sel in option.selections" class="icon-left" >
-                  {{sel}}
-                </ion-radio>
-              </div>
-            </div>
-          </ion-item>
-        </ion-list>
-
-      </ion-item>
-
-    </div> -->
 
   </ion-content>
 </ion-view>

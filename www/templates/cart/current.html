@@ -12,7 +12,7 @@
     <div class="list card" show-delete="true" ng-repeat="item in orderedItems">
 
       <div class="item cart-item item-thumbnail-left animated bounceInLeft" >
-        <img src="http://i.imgur.com/6zQAymt.jpg" />
+        <img src="{{item.product_id.details[0].img_path}}" />
 
         <h2>{{ item.product_id.name }}</h2>
         <h3>Options:</h3>

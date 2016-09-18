@@ -5,18 +5,19 @@
   </ion-nav-buttons>
 
     <ion-content class="has-tabs-top padding">
-      <ion-list>
-        <ion-item class="item-remove-animate" ng-repeat="vendor in vendors" type="item-text-wrap" ng-click="showVendorDetails(vendor._id)" >
+      <div class="list">
 
-          <!-- <h3>{{vendor.name}}   {{vendor.id}}</h3>
-          <p>{{vendor.phone}}</p>
-          <p>{{vendor.address}}</p> -->
+        <div class="item item-thumbnail-left item-remove-animate"  type="item-text-wrap"  ng-repeat="vendor in vendors" ng-click="showVendorDetails(vendor._id)">
 
+          <img ng-src="{{vendor.img_path}}">
           <h3>{{vendor.name}}</h3>
 
 
-        </ion-item>
-      </ion-list>
+        </div>
+      </div>
+
+
+
     </ion-content>
 
 </ion-view>

@@ -7,6 +7,7 @@ angular.module('LoopIn.events')
   $localStorage,
   $ionicFilterBar,
   $ionicLoading,
+  domain,
   VendorsService
 
 ) {

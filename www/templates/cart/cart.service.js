@@ -72,7 +72,7 @@ angular.module('LoopIn.cart')
   })
 
   .factory('HistoricalOrders', function($localStorage, $http, domain, api) {
-
+    var historicalOrders = [];
     return {
       all: function() {
 
@@ -81,6 +81,7 @@ angular.module('LoopIn.cart')
         return $http.get(domain + api.historicalOrders + $localStorage.user._id, {})
           .success(function(data, status, headers, config){
             console.log('ORDERS GET ALL data success');
+            historicalOrders = data;
             return data;
           })
           .error(function(data, status, headers, config){
@@ -88,7 +89,18 @@ angular.module('LoopIn.cart')
           });
 
 
+      },
+
+      get: function(orderId){
+        var data;
+        angular.forEach(historicalOrders, function(ho) {
+          if (ho._id == orderId) {
+            data = ho;
+          }
+        });
+        return data;
       }
+
 
 
     };

@@ -8,7 +8,7 @@ angular.module('LoopIn', [
 
   'ngStorage',
   'ngMap',
-
+  
   'jett.ionic.filter.bar',
 
   'LoopIn.constant',

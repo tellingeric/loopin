@@ -7,16 +7,15 @@
 
 
     <div ng-repeat="order in historicalOrders">
-      <div class="card" ng-click="" >
+      <div class="card" ng-click="gotoHistoricalOrderDetails(order._id)" >
 
         <a class="item">
           <h4>{{order.order_date}}</h4>
         </a>
-        
+
       </div>
 
     </div>
-
 
 
 

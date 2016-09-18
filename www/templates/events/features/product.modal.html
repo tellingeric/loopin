@@ -29,18 +29,21 @@
 
         <ion-item ng-repeat="option in detail.options" >
           <h4>{{option.name}}</h4>
-          <div ng-switch on="{{option.isMultiple}}">
-            <div ng-switch-when="true">
-              <ion-checkbox ng-repeat="sel in option.selections" >
-                {{sel}}
-              </ion-checkbox>
-            </div>
-            <div ng-switch-default>
-              <ion-radio ng-repeat="sel in option.selections" class="icon-left" >
-                {{sel}}
-              </ion-radio>
+          <div class="">
+            <div ng-switch on="{{option.isMultiple}}">
+              <div ng-switch-when="true">
+                <ion-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" >
+                  {{sel}}
+                </ion-checkbox>
+              </div>
+              <div ng-switch-default>
+                <ion-radio name="{{option.name}}" ng-repeat="sel in option.selections"  >
+                  {{sel}}
+                </ion-radio>
+              </div>
             </div>
           </div>
+
         </ion-item>
       </ion-list>
 

@@ -3,11 +3,16 @@ angular.module('LoopIn.cart')
   $scope,
   $state,
   $ionicPopup,
+  $stateParams,
+  $state,
   OrderedItems,
   HistoricalOrders
 ) {
-  $scope.orderedItems = OrderedItems.all();
 
+
+  $scope.orderedItems = OrderedItems.all();
+  $scope.historicalOrders = [];
+  $scope.historicalOrder = HistoricalOrders.get($stateParams.order_id);
   $scope.shownPm = null;
   $scope.paymentMethods = [{
     method: "Pay by cash",
@@ -45,18 +50,23 @@ angular.module('LoopIn.cart')
 
   $scope.changeQuantityAdd = function(item){
     item.orderedQuantity++;
-  }
+  };
 
   $scope.changeQuantityMinus = function(item){
     if(item.orderedQuantity > 1){
       item.orderedQuantity = Number(item.orderedQuantity) -1;
     }
-  }
+  };
 
   $scope.gotoPayment = function(){
     $state.go('tabs.cart.current-payment');
-  }
+  };
 
+  $scope.gotoHistoricalOrderDetails = function(orderId){
+    $state.go('tabs.cart.history-details', {
+      order_id: orderId
+    });
+  };
 
   $scope.togglePaymentMethod = function(pm) {
    if ($scope.isPaymentMethodShown(pm)) {
@@ -85,10 +95,10 @@ angular.module('LoopIn.cart')
      });
 
      $scope.RemoveAllItems();
-     
+
    })
 
- }
+ };
 
 
 })

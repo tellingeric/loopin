@@ -25,7 +25,7 @@ angular.module('LoopIn.events')
 
 
 
-      console.log(JSON.stringify($scope.event));
+      // console.log(JSON.stringify($scope.event));
 
       // if ($stateParams.event_id != null) {
       //   $ionicLoading.show();
@@ -46,6 +46,7 @@ angular.module('LoopIn.events')
       $scope.openModal = function(product) {
         $scope.product = product;
         $scope.product.orderedQuantity = 1;
+        $scope.product.options = [];
         $scope.modal.show();
       };
       $scope.closeModal = function() {
@@ -66,6 +67,19 @@ angular.module('LoopIn.events')
       });
 
 
+      // Desc toggle
+      $scope.toggleDesc = function(desc) {
+        if ($scope.isDescShown(desc)) {
+          $scope.shownDesc = null;
+        } else {
+          $scope.shownDesc = desc;
+        }
+      };
+
+      $scope.isDescShown = function(desc) {
+        return $scope.shownDesc === desc;
+      };
+      // ======================================
 
 
 
