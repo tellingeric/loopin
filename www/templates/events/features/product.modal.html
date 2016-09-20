@@ -32,14 +32,29 @@
           <div class="">
             <div ng-switch on="{{option.isMultiple}}">
               <div ng-switch-when="true">
-                <ion-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" >
+
+                <!-- <ion-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" >
                   {{sel}}
-                </ion-checkbox>
+                </ion-checkbox> -->
+
+
+                <md-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" ng-value="sel">
+                  {{sel}}
+                </md-checkbox>
+
               </div>
               <div ng-switch-default>
-                <ion-radio name="{{option.name}}" ng-repeat="sel in option.selections"  >
+                <!-- <ion-radio name="{{option.name}}" ng-repeat="sel in option.selections"  >
                   {{sel}}
-                </ion-radio>
+                </ion-radio> -->
+
+                <md-radio-group class="md-warn" >
+                  <md-radio-button ng-repeat="sel in option.selections" ng-value="sel"  >
+                    {{sel}}
+                  </md-radio-button>
+                </md-radio-group>
+
+
               </div>
             </div>
           </div>

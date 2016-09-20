@@ -4,23 +4,18 @@ GoogleMap AngularJS Directive
 [![Build Status](https://travis-ci.org/allenhwkim/angularjs-google-maps.png?branch=master)](https://travis-ci.org/allenhwkim/angularjs-google-maps)
 -->
 
-IMPORTANT NOTICE
------------------
-
- - `$scope.map` is deprecated. Use `NgMap.getMap().then(function(map) {...})`
-    instead to get a map instance.
- - `$scope.$on('mapInitialized', function(event, map) {..}` is deprecated.
-    Use `NgMap.getMap().then(function(map) {...})` instead to get a map instance.
- - `$scope.showInfoWindow(id)` is deprecated. `map.showInfoWindow(id)` instead.
-    You need to get map instance usng `NgMap.getMap().then()` in advance.
- - `map` tag is deprecated. Use `ng-map` tag instead
-
-[Demo](http://ngmap.github.io)  
+[Demo](https://ngmap.github.io)  
 [Documentation](https://rawgithub.com/allenhwkim/angularjs-google-maps/master/build/docs/index.html)  
 [Road Trip By StreetView](https://rawgit.com/allenhwkim/angularjs-google-maps/master/testapp/street-view_road_trip.html)  
 [Maps Can Talk](https://rawgit.com/allenhwkim/angularjs-google-maps/master/testapp/custom-marker.html) |
 [Custom Marker](https://rawgit.com/allenhwkim/angularjs-google-maps/master/testapp/custom-marker-2.html)  
 
+IMPORTANT NOTICE
+-----------------
+ - Implementation for Angular2 version has been started at [https://github.com/ng2-ui/ng2-map](https://github.com/ng2-ui/ng2-map)
+
+Background
+-----------------
 There is already [one](https://github.com/nlaplante/angular-google-maps) for this. However, I found myself doing totally different approach than the existing one, such as;
 
 1. **Everything in tag and attributes.**   
