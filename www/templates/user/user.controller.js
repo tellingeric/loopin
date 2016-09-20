@@ -1,9 +1,12 @@
 angular.module('LoopIn.user')
-  .controller('userController', function(
+  .controller('userController', userController)
+
+  function userController(
     $scope,
     $state,
     $ionicPopup,
     $ionicModal,
+    $mdToast,
     $localStorage,
     UserService
   ) {
@@ -13,6 +16,15 @@ angular.module('LoopIn.user')
     $scope.showing = true;
     $scope.register = false;
 
+    $scope.showSimpleToast = function(msg) {
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(msg)
+          .position('top left')
+          .hideDelay(3000)
+      );
+    };
+
     $scope.login = function(){
       console.log("TRY --> LOGIN user: " + $scope.user.username + " - PW: " + $scope.user.password);
       $scope.showing = false;
@@ -20,15 +32,14 @@ angular.module('LoopIn.user')
       UserService.login($scope.user.username, $scope.user.password).success(function(data){
 
         UserService.getUserInfo().success(function(data){
-          // console.log(JSON.stringify(data));
           $localStorage.user._id = data._id;
           $localStorage.user.email = data.email;
           $localStorage.user.username = data.username;
-          
+
         });
 
         $localStorage.user.token = data.token;
-
+        $scope.showSimpleToast('Welcome back!');
         $state.go('tabs.events.features');
         $scope.showing = true;
       })
@@ -40,7 +51,7 @@ angular.module('LoopIn.user')
 
         $scope.showing = true;
       })
-    }
+    };
 
     $scope.createUser = function(){
       console.log("TRY --> Register user: " + $scope.user.username + " - PW: " + $scope.user.password);
@@ -61,19 +72,49 @@ angular.module('LoopIn.user')
 
         $scope.showing = true;
       })
-    }
+    };
+
+
+    $scope.GetResetToken = function(){
+      UserService.forgetPassword($scope.user.email).success(function(data){
+        if (data.success)
+          $scope.showSimpleToast('Please Enter Token Below.');
+        else
+          $scope.showSimpleToast(data.message);
+
+      })
+      .error(function(data){
+        $scope.showSimpleToast(data.message);
+      })
+    };
+
+    $scope.ResetPassword = function(){
+      UserService.resetPassword($scope.user.resetToken, $scope.user.newPassword).success(function(data){
+        if (data.success){
+          $scope.showSimpleToast('Success! Please login again.');
+          $scope.closeModal();
+        }
+        else
+          $scope.showSimpleToast(data.message);
+
+      })
+      .error(function(data){
+        $scope.showSimpleToast(data.message);
+      })
+    };
 
     $scope.clearUserInfo = function(){
       $scope.user = {};
-    }
+    };
 
     $scope.showRegisterForm = function(s){
       $scope.register = s;
-    }
+    };
 
 
     $ionicModal.fromTemplateUrl('templates/user/forgetPwd.modal.html', {
       scope: $scope,
+      controller: userController,
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal = modal;
@@ -96,6 +137,7 @@ angular.module('LoopIn.user')
     // Execute action on remove modal
     $scope.$on('modal.removed', function() {
       // Execute action
+      $scope.clearUserInfo();
     });
 
-  })
+  }

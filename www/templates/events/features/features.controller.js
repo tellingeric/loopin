@@ -10,6 +10,7 @@ angular.module('LoopIn.events')
       $ionicModal,
       $localStorage,
       $ionicModal,
+      $mdToast,
       $compile,
       NgMap,
       EventsService,
@@ -34,6 +35,15 @@ angular.module('LoopIn.events')
       //     $ionicLoading.hide();
       //   });
       // }
+
+      $scope.showSimpleToast = function(msg) {
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(msg)
+            .position('bottom')
+            .hideDelay(1000)
+        );
+      };
 
 
       $ionicModal.fromTemplateUrl('templates/events/features/product.modal.html', {
