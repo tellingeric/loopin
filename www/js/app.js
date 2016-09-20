@@ -5,10 +5,10 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('LoopIn', [
   'ionic','ionic.service.core',
-
+  'ngMaterial',
   'ngStorage',
   'ngMap',
-  
+
   'jett.ionic.filter.bar',
 
   'LoopIn.constant',
