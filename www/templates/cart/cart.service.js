@@ -31,13 +31,23 @@ angular.module('LoopIn.cart')
         order.products = [];
 
         angular.forEach($localStorage.orderedItems, function(item) {
+
+          var selectedOptions = [];
+          angular.forEach(item.product_id.details[0].options, function(opt){
+            selectedOptions.push({
+              name: opt.name,
+              selections: opt.selected,
+              isMultiple: opt.isMultiple
+            })
+          })
+
           order.products.push({
             event: item.event,
-            num_sold: item.num_sold,
+            num_sold: item.orderedQuantity,
             unit_price: item.unit_price,
             product_id: item.product_id._id,
             product_vid: item.product_vid,
-            options: []
+            options: selectedOptions
           });
         });
 

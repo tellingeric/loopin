@@ -52,9 +52,9 @@
       .state('tabs.cart.history-details', {
           url: '/history/:order_id',
           views: {
-              'tabs-cart.history': {
+              'tabs-cart-history': {
                   templateUrl: 'templates/cart/order-details.html',
-                  controller:'featuresController'
+                  controller:'cartController'
               }
           }
       })

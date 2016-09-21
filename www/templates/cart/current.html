@@ -15,9 +15,16 @@
         <img src="{{item.product_id.details[0].img_path}}" />
 
         <h2>{{ item.product_id.name }}</h2>
-        <h3>Options:</h3>
-
         <p>{{ item.product_id.details[0].description }}</p>
+
+        <h3>Options:</h3>
+        <h4 ng-repeat="opt in item.product_id.details[0].options">
+          <!-- {{opt.name}} : {{opt.isMultiple ? opt.selected.join() : opt.selected}} -->
+          {{opt.name}} : {{opt.selected.join()}}
+
+        </h4>
+
+
         <a class="subdued">
           Quantity: {{item.orderedQuantity}}
         </a>

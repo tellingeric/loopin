@@ -56,7 +56,13 @@ angular.module('LoopIn.events')
       $scope.openModal = function(product) {
         $scope.product = product;
         $scope.product.orderedQuantity = 1;
-        $scope.product.options = [];
+        $scope.product.options = product.product_id.details[0].options;
+
+        angular.forEach($scope.product.options, function(opt) {
+          // opt.isMultiple ? opt.selected = [] : opt.selected = {};
+          opt.selected = [];
+        })
+
         $scope.modal.show();
       };
       $scope.closeModal = function() {
@@ -130,19 +136,6 @@ angular.module('LoopIn.events')
         $state.go('tabs.events.features-location');
       }
 
-     //
-    //   $scope.toggleProduct = function(product) {
-    //    if ($scope.isProductDetailShown(product)) {
-    //      $scope.shownDetail = null;
-    //    } else {
-    //      $scope.shownDetail = product;
-    //    }
-    //  };
-     //
-    //  $scope.isProductDetailShown = function(product) {
-    //    return $scope.shownDetail === product;
-    //  };
-
 
      $scope.orderThis = function(product, event_id){
 
@@ -154,6 +147,25 @@ angular.module('LoopIn.events')
       $scope.closeModal();
 
      }
+
+     $scope.updateProductOptions = function(name, selection, isMultiple){
+       var idx = $scope.product.options.map(function(e) { return e.name; }).indexOf(name);
+       var subidx;
+
+       if(isMultiple){
+         subidx = $scope.product.options[idx].indexOf(selection)
+         if(subidx > -1){
+            $scope.product.options[idx].selected.splice(idx,1);
+          }
+          else {
+            $scope.product.options[idx].selected.push(selection);
+          }
+       }
+       else{
+         $scope.product.options[idx].selected = [selection];
+       }
+     }
+
 
 
 

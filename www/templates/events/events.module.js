@@ -22,7 +22,6 @@
 
     .state('tabs.events.features', {
         url: '/features',
-        cache: false,
         views: {
             'tabs-events-features': {
                 templateUrl: 'templates/events/features/features.html',
@@ -43,7 +42,6 @@
 
     .state('tabs.events.features-details', {
         url: '/details/:event_id',
-        cache: false,
         views: {
             'tabs-events-features': {
                 templateUrl: 'templates/events/features/features-details.html',
@@ -54,7 +52,6 @@
 
     .state('tabs.events.vendors', {
         url: '/vendors',
-        cache: false,
         views: {
             'tabs-events-vendors': {
                 templateUrl: 'templates/events/vendors/vendors.html',
@@ -65,7 +62,6 @@
 
     .state('tabs.events.vendor-details', {
         url: '/vendors/:vendor_id',
-        cache: false,
         views: {
             'tabs-events-vendors': {
                 templateUrl: 'templates/events/vendors/vendor-details.html',

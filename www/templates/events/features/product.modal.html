@@ -11,56 +11,55 @@
 
   <ion-content>
 
-    <h4>Options:</h4>
-      <ion-list ng-repeat="detail in product.product_id.details" >
-        <div>
-          <p>
-            Description: {{detail.description}}
-          </p>
-          <p>
-            Price: {{detail.price}}
-          </p>
+    <ion-list ng-repeat="detail in product.product_id.details" >
+      <div>
+        <p>
+          Description: {{detail.description}}
+        </p>
+        <p>
+          Price: {{detail.price}}
+        </p>
 
-          <label class="item-input-wrapper">
-            <span class="input-label">Q:</span>
-            <input type="number" ng-model="product.orderedQuantity" min="1">
-          </label>
+        <label class="item-input-wrapper">
+          <span class="input-label">Q:</span>
+          <input type="telephone" ng-model="product.orderedQuantity" min="1">
+        </label>
 
 
-        <ion-item ng-repeat="option in detail.options" >
-          <h4>{{option.name}}</h4>
-          <div class="">
-            <div ng-switch on="{{option.isMultiple}}">
-              <div ng-switch-when="true">
+      <ion-item ng-repeat="option in detail.options" >
+        <h4>{{option.name}}</h4>
+        <div class="">
+          <div ng-switch on="{{option.isMultiple}}">
+            <div ng-switch-when="true">
 
-                <!-- <ion-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" >
+              <!-- <ion-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" >
+                {{sel}}
+              </ion-checkbox> -->
+
+
+              <md-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" ng-value="sel" ng-click="updateProductOptions(option.name, sel, option.isMultiple)" >
+                {{sel}}
+              </md-checkbox>
+
+            </div>
+            <div ng-switch-default>
+              <!-- <ion-radio name="{{option.name}}" ng-repeat="sel in option.selections"  >
+                {{sel}}
+              </ion-radio> -->
+
+              <md-radio-group class="md-warn" >
+                <md-radio-button ng-repeat="sel in option.selections" ng-value="sel"  ng-click="updateProductOptions(option.name, sel, option.isMultiple)" >
                   {{sel}}
-                </ion-checkbox> -->
+                </md-radio-button>
+              </md-radio-group>
 
 
-                <md-checkbox name="{{option.name}}" ng-repeat="sel in option.selections" ng-value="sel">
-                  {{sel}}
-                </md-checkbox>
-
-              </div>
-              <div ng-switch-default>
-                <!-- <ion-radio name="{{option.name}}" ng-repeat="sel in option.selections"  >
-                  {{sel}}
-                </ion-radio> -->
-
-                <md-radio-group class="md-warn" >
-                  <md-radio-button ng-repeat="sel in option.selections" ng-value="sel"  >
-                    {{sel}}
-                  </md-radio-button>
-                </md-radio-group>
-
-
-              </div>
             </div>
           </div>
+        </div>
 
-        </ion-item>
-      </ion-list>
+      </ion-item>
+    </ion-list>
 
   </ion-content>
 </ion-modal-view>

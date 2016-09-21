@@ -3,12 +3,33 @@
 
     <h3>show order details</h3>
     <h3>show tracking</h3>
-
-
     <h3>Delivery Address</h3>
-    <p>
-      
-    </p>
+
+    <h3>Products</h3>
+
+    <div class="list card" show-delete="true" ng-repeat="item in historicalOrder.products">
+
+      <div class="item cart-item item-thumbnail-left animated bounceInLeft" >
+        <!-- <img src="{{item.product_id.details[0].img_path}}" /> -->
+
+        <h2>{{ item.product_id }}</h2>
+        <p>{{ item.product_vid }}</p>
+
+        <h3>Options:</h3>
+        <h4 ng-repeat="opt in item.options">
+          <!-- {{opt.name}} : {{opt.isMultiple ? opt.selected.join() : opt.selected}} -->
+          {{opt.name}} : {{opt.selections.join()}}
+
+        </h4>
+
+
+        <a class="subdued">
+          Quantity: {{item.num_sold}}
+        </a>
+      </div>
+
+    </div>
+
 
   </ion-content>
 </ion-view>
