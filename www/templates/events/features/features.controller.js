@@ -122,7 +122,7 @@ angular.module('LoopIn.events')
           update: function(filteredItems){
             $scope.events = filteredItems;
           },
-          filterProperties: 'Name'
+          filterProperties: 'name'
         });
       };
 
