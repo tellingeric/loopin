@@ -6,7 +6,16 @@ angular.module('LoopIn.settings')
     $scope.user.token = $localStorage.user.token;
 
     $scope.logout = function(){
-      $localStorage.user.token = UserService.logout();
+
+      UserService.logout().success(function(data){
+        console.log(JSON.stringify(data));
+
+      })
+      .error(function(data){
+        console.log(JSON.stringify(data));
+      });
+
+      $localStorage.user.token = {};
 
       $state.go('login');
     }

@@ -22,7 +22,11 @@ angular.module('LoopIn', [
 
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $localStorage) {
+  $localStorage = $localStorage.$default({
+    loopin_device_token: {}
+  });
+
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -43,6 +47,7 @@ angular.module('LoopIn', [
     });
     push.register(function(token){
       console.log("My Device token:", token.token);
+      $localStorage.loopin_device_token = token.token;
       push.saveToken(token);
     });
   });

@@ -11,7 +11,8 @@ angular.module('LoopIn.user')
         console.log(domain + api.login)
         return $http.post(domain + api.login, {
             username: uname,
-            password: pw
+            password: pw,
+            device_token: $localStorage.loopin_device_token
         })
           .success(function(data, status, headers, config){
             console.log('USER log in Successfully');
@@ -31,7 +32,8 @@ angular.module('LoopIn.user')
         return $http.post(domain + api.register, {
             username: uname,
             password: pw,
-            email: email
+            email: email,
+            device_token: $localStorage.loopin_device_token
         })
           .success(function(data, status, headers, config){
             console.log('USER register Successfully');
@@ -46,7 +48,20 @@ angular.module('LoopIn.user')
       },
 
       logout: function(){
-        return '';
+        $http.defaults.headers.common['x-access-token'] = $localStorage.user.token;
+
+        return $http.put(domain + api.logout, {
+            device_token: $localStorage.loopin_device_token
+        })
+          .success(function(data, status, headers, config){
+            console.log('USER logout Successfully');
+            // token saved to local storage in controller
+            return data;
+          })
+          .error(function(data, status, headers, config){
+            console.log('USER logout failed');
+            return data;
+          })
       },
 
       getUserInfo: function(){
@@ -88,6 +103,8 @@ angular.module('LoopIn.user')
             return data;
           })
       }
+
+
 
 
 

@@ -8,6 +8,7 @@ angular.module('LoopIn.constant', [
 
 .constant('api', {
   'login' : 'login',
+  'logout' : 'api/logout',
   'register' : 'register',
   'forgetPassword': 'forgetPassword',
   'resetPassword': 'reset/',

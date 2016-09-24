@@ -126,6 +126,12 @@ angular.module('LoopIn.events')
         });
       };
 
+
+      $scope.gotoEventsList = function(){
+        $state.go('tabs.events.features', {});
+      }
+
+
       $scope.showEventDetails = function(eventId){
         $state.go('tabs.events.features-details', {
     			event_id: eventId
