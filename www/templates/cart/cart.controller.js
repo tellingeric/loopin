@@ -5,6 +5,7 @@ angular.module('LoopIn.cart')
   $ionicPopup,
   $stateParams,
   $state,
+  domain,
   OrderedItems,
   HistoricalOrders
 ) {
@@ -14,6 +15,8 @@ angular.module('LoopIn.cart')
   $scope.historicalOrders = [];
   $scope.historicalOrder = HistoricalOrders.get($stateParams.order_id);
   $scope.shownPm = null;
+  $scope.img_domain = domain;
+
   $scope.paymentMethods = [{
     method: "Pay by cash",
     icon: "ion-cash",
@@ -39,7 +42,7 @@ angular.module('LoopIn.cart')
   $scope.TotalPrice = function(){
     var sumPrice = 0;
     angular.forEach($scope.orderedItems, function(item) {
-      sumPrice += item.product_id.details[0].price * item.orderedQuantity;
+      sumPrice += item.product.details.price * item.orderedQuantity;
     });
     return sumPrice.toFixed(2);
   };

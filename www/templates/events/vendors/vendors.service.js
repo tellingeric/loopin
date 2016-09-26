@@ -39,9 +39,9 @@ angular.module('LoopIn.events')
           .success(function(data, status, headers, config){
             console.log('Vendors GET ALL data success');
             vendors = data;
-            angular.forEach(vendors, function(v) {
-              if (v.img_path) v.img_path = v.img_path.replace("public/", domain);
-            });
+            // angular.forEach(vendors, function(v) {
+            //   if (v.img_path) v.img_path = v.img_path.replace("public/", domain);
+            // });
 
             return data;
           })

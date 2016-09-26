@@ -14,14 +14,14 @@ angular.module('LoopIn.events')
 
             events = data;
 
-            angular.forEach(events, function(e) {
-              if (e.img_path) e.img_path = e.img_path.replace("public/", domain);
-              angular.forEach(e.products, function(p){
-                angular.forEach(p.product_id.details, function(d){
-                    if (d.img_path) d.img_path = d.img_path.replace("public/", domain);
-                })
-              });
-            });
+            // angular.forEach(events, function(e) {
+            //   if (e.img_path) e.img_path = e.img_path.replace("public/", domain);
+            //   angular.forEach(e.products, function(p){
+            //     angular.forEach(p.product_id.details, function(d){
+            //         if (d.img_path) d.img_path = d.img_path.replace("public/", domain);
+            //     })
+            //   });
+            // });
 
             return data;
           })

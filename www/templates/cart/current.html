@@ -12,13 +12,13 @@
     <div class="list card" show-delete="true" ng-repeat="item in orderedItems">
 
       <div class="item cart-item item-thumbnail-left animated bounceInLeft" >
-        <img src="{{item.product_id.details[0].img_path}}" />
+        <img src="{{img_domain + item.product.details.img_relative_url}}" />
 
-        <h2>{{ item.product_id.name }}</h2>
-        <p>{{ item.product_id.details[0].description }}</p>
+        <h2>{{ item.product.name }}</h2>
+        <p>{{ item.product.details.description }}</p>
 
         <h3>Options:</h3>
-        <h4 ng-repeat="opt in item.product_id.details[0].options">
+        <h4 ng-repeat="opt in item.product.details.options">
           <!-- {{opt.name}} : {{opt.isMultiple ? opt.selected.join() : opt.selected}} -->
           {{opt.name}} : {{opt.selected.join()}}
 

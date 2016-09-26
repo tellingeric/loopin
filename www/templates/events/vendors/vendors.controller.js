@@ -14,7 +14,7 @@ angular.module('LoopIn.events')
 
    $scope.vendors = [];
    $scope.vendor = VendorsService.get($stateParams.vendor_id);
-
+   $scope.img_domain = domain;
    $scope.filterBarInstance;
 
 

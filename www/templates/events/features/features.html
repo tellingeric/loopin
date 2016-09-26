@@ -38,7 +38,7 @@
     <div ng-repeat="event in events">
 			<div class="card" ng-click="showEventDetails(event._id)" >
 				<div class="item item-image">
-					<img ng-src="{{event.img_path}}">
+					<img ng-src="{{img_domain + event.img_relative_url}}">
 				</div>
 
 				<a class="item">

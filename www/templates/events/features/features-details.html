@@ -76,17 +76,17 @@
 
 
     <div class="row" style="flex-wrap: wrap">
-      <div class="col col-50" ng-repeat="product in event.products">
-        <div class="card" ng-click="openModal(product)">
+      <div class="col col-50" ng-repeat="p in event.products">
+        <div class="card" ng-click="openModal(p)">
 
           <div class="item item-image">
-            <img ng-src="{{product.product_id.details[0].img_path}}"  />
+            <img ng-src="{{img_domain + p.product.details.img_relative_url}}"  />
           </div>
 
           <div class="item">
-            <h2>{{product.product_id.name}}</h2>
-            <h4>${{product.unit_price}}</h4>
-            <h4>sold: {{product.num_sold}}</h4>
+            <h2>{{p.product.name}}</h2>
+            <h4>${{p.unit_price}}</h4>
+            <h4>sold: {{p.num_sold}}</h4>
           </div>
 
         </div>

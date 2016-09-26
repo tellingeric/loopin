@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar class="bar-assertive fix-buttons" >
-    <h1 class="title">{{product.product_id.name}}</h1>
+    <h1 class="title">{{product.product.name}}</h1>
 
 
     <a class="button" ng-click="closeModal()">Cancel</a>
@@ -11,13 +11,14 @@
 
   <ion-content>
 
-    <ion-list ng-repeat="detail in product.product_id.details" >
+    <ion-list>
+    <!-- <ion-list ng-repeat="detail in product.product.details" > -->
       <div>
         <p>
-          Description: {{detail.description}}
+          Description: {{product.product.details.description}}
         </p>
         <p>
-          Price: {{detail.price}}
+          Price: {{product.product.details.price}}
         </p>
 
         <label class="item-input-wrapper">
@@ -26,7 +27,7 @@
         </label>
 
 
-      <ion-item ng-repeat="option in detail.options" >
+      <ion-item ng-repeat="option in product.product.details.options" >
         <h4>{{option.name}}</h4>
         <div class="">
           <div ng-switch on="{{option.isMultiple}}">

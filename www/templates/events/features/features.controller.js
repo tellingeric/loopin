@@ -13,12 +13,14 @@ angular.module('LoopIn.events')
       $mdToast,
       $compile,
       NgMap,
+      domain,
       EventsService,
       OrderedItems
     ){
 
       $scope.events = [];
       $scope.event = EventsService.get($stateParams.event_id);
+      $scope.img_domain = domain;
       $scope.data = {};
       $scope.map = {};
       $scope.modal = {};
@@ -56,7 +58,7 @@ angular.module('LoopIn.events')
       $scope.openModal = function(product) {
         $scope.product = product;
         $scope.product.orderedQuantity = 1;
-        $scope.product.options = product.product_id.details[0].options;
+        $scope.product.options = product.product.details.options;
 
         angular.forEach($scope.product.options, function(opt) {
           // opt.isMultiple ? opt.selected = [] : opt.selected = {};

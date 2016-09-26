@@ -9,7 +9,7 @@
 
         <div class="item item-thumbnail-left item-remove-animate"  type="item-text-wrap"  ng-repeat="vendor in vendors" ng-click="showVendorDetails(vendor._id)">
 
-          <img ng-src="{{vendor.img_path}}">
+          <img ng-src="{{img_domain + vendor.img_relative_url}}">
           <h3>{{vendor.name}}</h3>
 
 
